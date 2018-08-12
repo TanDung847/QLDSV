@@ -48,6 +48,15 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // tENCNLabel
+            // 
+            tENCNLabel.AutoSize = true;
+            tENCNLabel.Location = new System.Drawing.Point(87, 54);
+            tENCNLabel.Name = "tENCNLabel";
+            tENCNLabel.Size = new System.Drawing.Size(85, 13);
+            tENCNLabel.TabIndex = 9;
+            tENCNLabel.Text = "TÊN CHI NHÁNH";
+            // 
             // dS_DSPM
             // 
             this.dS_DSPM.DataSetName = "DS_DSPM";
@@ -92,6 +101,7 @@
             this.btnThoat.TabIndex = 16;
             this.btnThoat.Text = "THOÁT";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnDangNhap
             // 
@@ -135,15 +145,6 @@
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(283, 21);
             this.txtLogin.TabIndex = 11;
-            // 
-            // tENCNLabel
-            // 
-            tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(87, 54);
-            tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(85, 13);
-            tENCNLabel.TabIndex = 9;
-            tENCNLabel.Text = "TÊN CHI NHÁNH";
             // 
             // cmbTenCN
             // 
