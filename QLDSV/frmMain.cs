@@ -26,6 +26,14 @@ namespace QLDSV
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            Form frm = this.CheckExists(typeof(Forms.frmDangNhap));
+            if (frm != null) frm.Activate();
+            else
+            {
+                Forms.frmDangNhap f = new Forms.frmDangNhap();
+                f.MdiParent = this;
+                f.Show();
+            }
 
         }
 

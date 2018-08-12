@@ -24,7 +24,6 @@ namespace QLDSV.Forms
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             cmbTenCN.SelectedIndex = 1;
             cmbTenCN.SelectedIndex = 0;
-
         }
 
         private void cmbTenCN_SelectedIndexChanged(object sender, EventArgs e)
@@ -46,7 +45,6 @@ namespace QLDSV.Forms
             {
                 return;
             }
-            MessageBox.Show("Thành công", "", MessageBoxButtons.OK);
             SqlDataReader myReader;
             String strLenh = "exec SP_DANGNHAP '" + Program.mlogin + "'";
             myReader = Program.ExecSqlDataReader(strLenh);
@@ -69,6 +67,7 @@ namespace QLDSV.Forms
             Program.frmChinh.manv.Text = "Mã nhân viên: "+ Program.username;
             Program.frmChinh.hoTen.Text = "Họ tên: " + Program.mHoten;
             Program.frmChinh.nhom.Text = "Nhóm: " + Program.mGroup;
+            this.Hide();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
