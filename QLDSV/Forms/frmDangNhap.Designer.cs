@@ -41,7 +41,7 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.cmbTenCN = new System.Windows.Forms.ComboBox();
+            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
             tENCNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSPM)).BeginInit();
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtLogin);
             this.groupBox1.Controls.Add(tENCNLabel);
-            this.groupBox1.Controls.Add(this.cmbTenCN);
+            this.groupBox1.Controls.Add(this.cmbChiNhanh);
             this.groupBox1.Location = new System.Drawing.Point(56, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(641, 256);
@@ -146,18 +146,18 @@
             this.txtLogin.Size = new System.Drawing.Size(283, 21);
             this.txtLogin.TabIndex = 11;
             // 
-            // cmbTenCN
+            // cmbChiNhanh
             // 
-            this.cmbTenCN.DataSource = this.bdsDSPM;
-            this.cmbTenCN.DisplayMember = "TENCN";
-            this.cmbTenCN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTenCN.FormattingEnabled = true;
-            this.cmbTenCN.Location = new System.Drawing.Point(226, 46);
-            this.cmbTenCN.Name = "cmbTenCN";
-            this.cmbTenCN.Size = new System.Drawing.Size(283, 21);
-            this.cmbTenCN.TabIndex = 10;
-            this.cmbTenCN.ValueMember = "TENSERVER";
-            this.cmbTenCN.SelectedIndexChanged += new System.EventHandler(this.cmbTenCN_SelectedIndexChanged);
+            this.cmbChiNhanh.DataSource = this.bdsDSPM;
+            this.cmbChiNhanh.DisplayMember = "TENCN";
+            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbChiNhanh.FormattingEnabled = true;
+            this.cmbChiNhanh.Location = new System.Drawing.Point(226, 46);
+            this.cmbChiNhanh.Name = "cmbChiNhanh";
+            this.cmbChiNhanh.Size = new System.Drawing.Size(283, 21);
+            this.cmbChiNhanh.TabIndex = 10;
+            this.cmbChiNhanh.ValueMember = "TENSERVER";
+            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbTenCN_SelectedIndexChanged);
             // 
             // frmDangNhap
             // 
@@ -190,6 +190,6 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLogin;
-        private System.Windows.Forms.ComboBox cmbTenCN;
+        private System.Windows.Forms.ComboBox cmbChiNhanh;
     }
 }

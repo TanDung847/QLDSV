@@ -22,15 +22,15 @@ namespace QLDSV.Forms
         {
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
-            cmbTenCN.SelectedIndex = 1;
-            cmbTenCN.SelectedIndex = 0;
+            cmbChiNhanh.SelectedIndex = 1;
+            cmbChiNhanh.SelectedIndex = 0;
         }
 
         private void cmbTenCN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTenCN.SelectedValue != null)
+            if (cmbChiNhanh.SelectedValue != null)
             {
-                Program.servername = cmbTenCN.SelectedValue.ToString();
+                Program.servername = cmbChiNhanh.SelectedValue.ToString();
             }
         }
 
@@ -48,6 +48,8 @@ namespace QLDSV.Forms
             {
                 return;
             }
+            Program.mChinhanh = cmbChiNhanh.SelectedIndex;
+            Program.bds_dspm = bdsDSPM;
             SqlDataReader myReader;
             String strLenh = "exec SP_DANGNHAP '" + Program.mlogin + "'";
             myReader = Program.ExecSqlDataReader(strLenh);
@@ -67,8 +69,8 @@ namespace QLDSV.Forms
             Program.mGroup = myReader.GetString(2);
             myReader.Close();
             Program.conn.Close();
-            Program.frmChinh.manv.Text = "Mã nhân viên: "+ Program.username;
-            Program.frmChinh.hoTen.Text = "Họ tên: " + Program.mHoten;
+            Program.frmChinh.manv.Text = "Mã giảng viên: "+ Program.username;
+            Program.frmChinh.hoTen.Text = "Họ Tên: " + Program.mHoten;
             Program.frmChinh.nhom.Text = "Nhóm: " + Program.mGroup;
             this.Hide();
         }
