@@ -40,7 +40,11 @@ namespace QLDSV
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form frm = this.CheckExists(typeof(Forms.frmDangNhap));
-            if (frm != null) frm.Activate();
+            if (frm != null)
+            {
+                frm.Activate();
+                frm.Show();
+            }
             else
             {
                 Forms.frmDangNhap f = new Forms.frmDangNhap();
@@ -48,6 +52,11 @@ namespace QLDSV
                 f.Show();
             }
 
+        }
+
+        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
         }
     }
 }

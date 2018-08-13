@@ -28,7 +28,10 @@ namespace QLDSV.Forms
 
         private void cmbTenCN_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Program.servername = cmbTenCN.SelectedValue.ToString();
+            if (cmbTenCN.SelectedValue != null)
+            {
+                Program.servername = cmbTenCN.SelectedValue.ToString();
+            }
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)

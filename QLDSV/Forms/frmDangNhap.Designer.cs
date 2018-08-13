@@ -167,6 +167,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmDangNhap";
             this.Text = "ĐĂNG NHẬP";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSPM)).EndInit();
