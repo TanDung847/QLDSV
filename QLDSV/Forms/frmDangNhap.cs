@@ -57,16 +57,26 @@ namespace QLDSV.Forms
             {
                 return;
             }
-            myReader.Read();
-
-            Program.username = myReader.GetString(0);
-            if (Convert.IsDBNull(Program.username))
+            while (myReader.Read())
             {
-                MessageBox.Show("Login không có quyền truy cập CSDL\nBạn xem lại username và password.\n","",MessageBoxButtons.OK);
-                return;
+                
+                Program.username = myReader.GetString(0);
+                if (Convert.IsDBNull(Program.username))
+                {
+                    MessageBox.Show("Login không có quyền truy cập CSDL\nBạn xem lại username và password.\n", "", MessageBoxButtons.OK);
+                    return;
+                }
+                try
+                {
+                    Program.mHoten = myReader.GetString(1);
+                    Program.mGroup = myReader.GetString(2);
+                }
+                catch (System.Data.SqlTypes.SqlNullValueException ex)
+                {
+                    Console.WriteLine("Test");
+                }
+                
             }
-            Program.mHoten = myReader.GetString(1);
-            Program.mGroup = myReader.GetString(2);
             myReader.Close();
             Program.conn.Close();
             Program.frmChinh.manv.Text = "Mã giảng viên: "+ Program.username;

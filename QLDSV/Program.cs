@@ -6,6 +6,8 @@ using DevExpress.UserSkins;
 using DevExpress.Skins;
 using System.Data.SqlClient;
 using System.Data;
+using QLDSV.Forms;
+
 namespace QLDSV
 {
     static class Program
@@ -50,6 +52,26 @@ namespace QLDSV
                 MessageBox.Show("Lỗi kết nối cơ sở dữ liệu.\nBạn xem lại user name và password.\n " + e.Message, "", MessageBoxButtons.OK);
                 return 0;
             }
+        }
+        public static bool checkExistsAllSite(String strLenh)
+        {
+            SqlDataReader myreader;
+            bool ok = false;
+            String orgServername = servername;
+            String orgConnectionString = connstr;
+            for (int i = 0; i < bds_dspm.Count; i++)
+            {
+                servername = ((DataRowView)Program.bds_dspm[i])["TENSERVER"].ToString().Trim();
+                if (!servername.Equals(orgServername) && KetNoi() != 0)
+                {
+                    myreader = Program.ExecSqlDataReader(strLenh);
+                    if (myreader != null && myreader.HasRows) ok = true;
+                }
+            }
+            servername = orgServername;
+            connstr = orgConnectionString;
+            KetNoi();
+            return ok;
         }
 
         public static SqlDataReader ExecSqlDataReader(String strLenh)
@@ -111,7 +133,9 @@ namespace QLDSV
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             frmChinh = new frmMain();
+
             Application.Run(frmChinh);
+            //Application.Run(mainForm: new frmSinhVien());
         }
     }
 }
