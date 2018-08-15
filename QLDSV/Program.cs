@@ -134,7 +134,7 @@ namespace QLDSV
             SkinManager.EnableFormSkins();
             frmChinh = new frmMain();
 
-            Application.Run(frmChinh);
+            Application.Run(new Forms.frmDangNhap());
             //Application.Run(mainForm: new frmSinhVien());
         }
     }

@@ -39,6 +39,7 @@
             System.Windows.Forms.Label gHICHULabel;
             System.Windows.Forms.Label nGHIHOCLabel;
             System.Windows.Forms.Label pHAILabel1;
+            System.Windows.Forms.Label tENCNLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSinhVien));
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
             this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -46,6 +47,16 @@
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPHAI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNGAYSINH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNOISINH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGHICHU = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
@@ -62,6 +73,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.cbPHAI = new System.Windows.Forms.CheckBox();
             this.cbNGHIHOC = new DevExpress.XtraEditors.CheckEdit();
             this.txtGHICHU = new DevExpress.XtraEditors.TextEdit();
@@ -69,22 +81,17 @@
             this.txtNOISINH = new DevExpress.XtraEditors.TextEdit();
             this.dateNGAYSINH = new DevExpress.XtraEditors.DateEdit();
             this.cbbMaLop = new System.Windows.Forms.ComboBox();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtTEN = new DevExpress.XtraEditors.TextEdit();
             this.txtHO = new DevExpress.XtraEditors.TextEdit();
             this.txtMASV = new DevExpress.XtraEditors.TextEdit();
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
-            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPHAI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGAYSINH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNOISINH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGHICHU = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCoSo = new System.Windows.Forms.ComboBox();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_DSPM = new QLDSV.DS_DSPM();
+            this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
+            this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -95,6 +102,7 @@
             gHICHULabel = new System.Windows.Forms.Label();
             nGHIHOCLabel = new System.Windows.Forms.Label();
             pHAILabel1 = new System.Windows.Forms.Label();
+            tENCNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENGridControl)).BeginInit();
@@ -107,10 +115,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNOISINH.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNGAYSINH.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNGAYSINH.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTEN.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHO.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMASV.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             this.SuspendLayout();
             // 
             // mASVLabel
@@ -204,6 +215,15 @@
             pHAILabel1.Text = "PHAI:";
             pHAILabel1.Click += new System.EventHandler(this.pHAILabel1_Click);
             // 
+            // tENCNLabel
+            // 
+            tENCNLabel.AutoSize = true;
+            tENCNLabel.Location = new System.Drawing.Point(157, 37);
+            tENCNLabel.Name = "tENCNLabel";
+            tENCNLabel.Size = new System.Drawing.Size(44, 13);
+            tENCNLabel.TabIndex = 0;
+            tENCNLabel.Text = "TENCN:";
+            // 
             // dS_QLDSV
             // 
             this.dS_QLDSV.DataSetName = "DS_QLDSV";
@@ -233,7 +253,7 @@
             // 
             this.sINHVIENGridControl.DataSource = this.sINHVIENBindingSource;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 40);
+            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 122);
             this.sINHVIENGridControl.MainView = this.gridView1;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
             this.sINHVIENGridControl.Size = new System.Drawing.Size(759, 220);
@@ -257,6 +277,76 @@
             this.gridView1.GridControl = this.sINHVIENGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
+            // 
+            // colMASV
+            // 
+            this.colMASV.FieldName = "MASV";
+            this.colMASV.Name = "colMASV";
+            this.colMASV.Visible = true;
+            this.colMASV.VisibleIndex = 0;
+            // 
+            // colHO
+            // 
+            this.colHO.FieldName = "HO";
+            this.colHO.Name = "colHO";
+            this.colHO.Visible = true;
+            this.colHO.VisibleIndex = 1;
+            // 
+            // colTEN
+            // 
+            this.colTEN.FieldName = "TEN";
+            this.colTEN.Name = "colTEN";
+            this.colTEN.Visible = true;
+            this.colTEN.VisibleIndex = 2;
+            // 
+            // colMALOP
+            // 
+            this.colMALOP.FieldName = "MALOP";
+            this.colMALOP.Name = "colMALOP";
+            this.colMALOP.Visible = true;
+            this.colMALOP.VisibleIndex = 3;
+            // 
+            // colPHAI
+            // 
+            this.colPHAI.FieldName = "PHAI";
+            this.colPHAI.Name = "colPHAI";
+            this.colPHAI.Visible = true;
+            this.colPHAI.VisibleIndex = 4;
+            // 
+            // colNGAYSINH
+            // 
+            this.colNGAYSINH.FieldName = "NGAYSINH";
+            this.colNGAYSINH.Name = "colNGAYSINH";
+            this.colNGAYSINH.Visible = true;
+            this.colNGAYSINH.VisibleIndex = 5;
+            // 
+            // colNOISINH
+            // 
+            this.colNOISINH.FieldName = "NOISINH";
+            this.colNOISINH.Name = "colNOISINH";
+            this.colNOISINH.Visible = true;
+            this.colNOISINH.VisibleIndex = 6;
+            // 
+            // colDIACHI
+            // 
+            this.colDIACHI.FieldName = "DIACHI";
+            this.colDIACHI.Name = "colDIACHI";
+            this.colDIACHI.Visible = true;
+            this.colDIACHI.VisibleIndex = 7;
+            // 
+            // colGHICHU
+            // 
+            this.colGHICHU.FieldName = "GHICHU";
+            this.colGHICHU.Name = "colGHICHU";
+            this.colGHICHU.Visible = true;
+            this.colGHICHU.VisibleIndex = 8;
+            // 
+            // colNGHIHOC
+            // 
+            this.colNGHIHOC.FieldName = "NGHIHOC";
+            this.colNGHIHOC.Name = "colNGHIHOC";
+            this.colNGHIHOC.Visible = true;
+            this.colNGHIHOC.VisibleIndex = 9;
             // 
             // barManager1
             // 
@@ -320,7 +410,6 @@
             this.btnDelete.Id = 5;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
             // 
             // btnSave
             // 
@@ -362,31 +451,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(759, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(759, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 460);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 569);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(759, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(759, 18);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 527);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(759, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(759, 42);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 527);
             // 
             // barButtonItem1
             // 
@@ -425,12 +514,22 @@
             this.groupBox1.Controls.Add(this.txtMASV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(0, 260);
+            this.groupBox1.Location = new System.Drawing.Point(0, 342);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(759, 194);
+            this.groupBox1.Size = new System.Drawing.Size(759, 223);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(25, 165);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 21;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cbPHAI
             // 
@@ -506,11 +605,6 @@
             this.cbbMaLop.ValueMember = "malop";
             this.cbbMaLop.SelectedIndexChanged += new System.EventHandler(this.cbbMaLop_SelectedIndexChanged);
             // 
-            // v_dslopBindingSource
-            // 
-            this.v_dslopBindingSource.DataMember = "v_dslop";
-            this.v_dslopBindingSource.DataSource = this.dS_QLDSV;
-            // 
             // txtTEN
             // 
             this.txtTEN.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sINHVIENBindingSource, "TEN", true));
@@ -538,97 +632,66 @@
             this.txtMASV.Size = new System.Drawing.Size(100, 20);
             this.txtMASV.TabIndex = 1;
             // 
+            // v_dslopBindingSource
+            // 
+            this.v_dslopBindingSource.DataMember = "v_dslop";
+            this.v_dslopBindingSource.DataSource = this.dS_QLDSV;
+            // 
             // v_dslopTableAdapter
             // 
             this.v_dslopTableAdapter.ClearBeforeFill = true;
             // 
-            // colMASV
+            // panel1
             // 
-            this.colMASV.FieldName = "MASV";
-            this.colMASV.Name = "colMASV";
-            this.colMASV.Visible = true;
-            this.colMASV.VisibleIndex = 0;
+            this.panel1.Controls.Add(this.cmbCoSo);
+            this.panel1.Controls.Add(tENCNLabel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(759, 80);
+            this.panel1.TabIndex = 11;
             // 
-            // colHO
+            // cmbCoSo
             // 
-            this.colHO.FieldName = "HO";
-            this.colHO.Name = "colHO";
-            this.colHO.Visible = true;
-            this.colHO.VisibleIndex = 1;
+            this.cmbCoSo.DataSource = this.v_DSPMBindingSource;
+            this.cmbCoSo.DisplayMember = "TENCN";
+            this.cmbCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCoSo.FormattingEnabled = true;
+            this.cmbCoSo.Location = new System.Drawing.Point(240, 34);
+            this.cmbCoSo.Name = "cmbCoSo";
+            this.cmbCoSo.Size = new System.Drawing.Size(388, 21);
+            this.cmbCoSo.TabIndex = 2;
+            this.cmbCoSo.ValueMember = "TENSERVER";
+            this.cmbCoSo.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
             // 
-            // colTEN
+            // v_DSPMBindingSource
             // 
-            this.colTEN.FieldName = "TEN";
-            this.colTEN.Name = "colTEN";
-            this.colTEN.Visible = true;
-            this.colTEN.VisibleIndex = 2;
+            this.v_DSPMBindingSource.DataMember = "V_DSPM";
+            this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
             // 
-            // colMALOP
+            // dS_DSPM
             // 
-            this.colMALOP.FieldName = "MALOP";
-            this.colMALOP.Name = "colMALOP";
-            this.colMALOP.Visible = true;
-            this.colMALOP.VisibleIndex = 3;
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // colPHAI
+            // v_DSPMTableAdapter
             // 
-            this.colPHAI.FieldName = "PHAI";
-            this.colPHAI.Name = "colPHAI";
-            this.colPHAI.Visible = true;
-            this.colPHAI.VisibleIndex = 4;
+            this.v_DSPMTableAdapter.ClearBeforeFill = true;
             // 
-            // colNGAYSINH
+            // tableAdapterManager1
             // 
-            this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.Name = "colNGAYSINH";
-            this.colNGAYSINH.Visible = true;
-            this.colNGAYSINH.VisibleIndex = 5;
-            // 
-            // colNOISINH
-            // 
-            this.colNOISINH.FieldName = "NOISINH";
-            this.colNOISINH.Name = "colNOISINH";
-            this.colNOISINH.Visible = true;
-            this.colNOISINH.VisibleIndex = 6;
-            // 
-            // colDIACHI
-            // 
-            this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.Name = "colDIACHI";
-            this.colDIACHI.Visible = true;
-            this.colDIACHI.VisibleIndex = 7;
-            // 
-            // colGHICHU
-            // 
-            this.colGHICHU.FieldName = "GHICHU";
-            this.colGHICHU.Name = "colGHICHU";
-            this.colGHICHU.Visible = true;
-            this.colGHICHU.VisibleIndex = 8;
-            // 
-            // colNGHIHOC
-            // 
-            this.colNGHIHOC.FieldName = "NGHIHOC";
-            this.colNGHIHOC.Name = "colNGHIHOC";
-            this.colNGHIHOC.Visible = true;
-            this.colNGHIHOC.VisibleIndex = 9;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(25, 165);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
-            this.btnCancel.Text = "Hủy";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // frmSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 483);
+            this.ClientSize = new System.Drawing.Size(759, 587);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sINHVIENGridControl);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -650,10 +713,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNOISINH.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNGAYSINH.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateNGAYSINH.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTEN.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHO.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMASV.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -706,5 +773,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colGHICHU;
         private DevExpress.XtraGrid.Columns.GridColumn colNGHIHOC;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Panel panel1;
+        private DS_DSPM dS_DSPM;
+        private System.Windows.Forms.BindingSource v_DSPMBindingSource;
+        private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
+        private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
+        private System.Windows.Forms.ComboBox cmbCoSo;
     }
 }

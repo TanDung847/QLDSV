@@ -42,42 +42,45 @@ namespace QLDSV
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Form frm = this.CheckExists(typeof(Forms.frmDangNhap));
-            if (frm != null) frm.Activate();
-            else
-            {
-                Forms.frmDangNhap f = new Forms.frmDangNhap();
-                f.MdiParent = this;
-                f.Show();
-            }
+            //Form frm = this.CheckExists(typeof(Forms.frmDangNhap));
+            //if (frm != null) frm.Activate();
+            //else
+            //{
+            //    Forms.frmDangNhap f = new Forms.frmDangNhap();
+            //    f.MdiParent = this;
+            //    f.Show();
+            //}
 
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.CheckExists(typeof(Forms.frmDangNhap));
-            if (frm != null)
-            {
-                frm.Activate();
-                frm.Show();
-            }
-            else
-            {
-                Forms.frmDangNhap f = new Forms.frmDangNhap();
-                f.MdiParent = this;
-                f.Show();
-            }
-
+            Close();
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
-        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void btnLOP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ShowMdiChildren(typeof(Forms.frmSinhVien));
+            ShowMdiChildren(typeof(frmLop));
+        }
+
+        private void btnSINHVIEN_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmSinhVien));
+        }
+
+        private void btnMONHOC_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmMonHoc));
+        }
+
+        private void btnDIEM_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(frmDiem));
         }
     }
 }

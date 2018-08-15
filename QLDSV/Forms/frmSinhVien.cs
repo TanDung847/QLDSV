@@ -40,6 +40,8 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
+            this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             // TODO: This line of code loads data into the 'dS_QLDSV.SINHVIEN' table. You can move, or remove it, as needed.
@@ -196,7 +198,17 @@ namespace QLDSV.Forms
                     return;
                 }
             }
-            //if (bdsSV.Count == 0) btnXoa.Enabled = false;
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

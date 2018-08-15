@@ -19,18 +19,6 @@
     <Shape ID="DesignTable:v_dslop" ZOrder="1" X="2534" Y="70" Height="115" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_DIEM_SINHVIEN" ZOrder="6" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>316</X>
-          <Y>146</Y>
-        </Point>
-        <Point>
-          <X>246</X>
-          <Y>146</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_DIEM_MONHOC1" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -44,6 +32,18 @@
         <Point>
           <X>229</X>
           <Y>223</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_DIEM_SINHVIEN" ZOrder="6" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>316</X>
+          <Y>146</Y>
+        </Point>
+        <Point>
+          <X>246</X>
+          <Y>146</Y>
         </Point>
       </RoutePoints>
     </Connector>

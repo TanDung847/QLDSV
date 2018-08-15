@@ -82,7 +82,8 @@ namespace QLDSV.Forms
             Program.frmChinh.manv.Text = "Mã giảng viên: "+ Program.username;
             Program.frmChinh.hoTen.Text = "Họ Tên: " + Program.mHoten;
             Program.frmChinh.nhom.Text = "Nhóm: " + Program.mGroup;
-            this.Hide();
+            Form frmMain = new frmMain();
+            frmMain.Show();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
