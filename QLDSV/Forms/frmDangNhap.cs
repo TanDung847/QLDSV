@@ -79,9 +79,6 @@ namespace QLDSV.Forms
             }
             myReader.Close();
             Program.conn.Close();
-            Program.frmChinh.manv.Text = "Mã giảng viên: "+ Program.username;
-            Program.frmChinh.hoTen.Text = "Họ Tên: " + Program.mHoten;
-            Program.frmChinh.nhom.Text = "Nhóm: " + Program.mGroup;
             Form frmMain = new frmMain();
             frmMain.Show();
         }

@@ -40,6 +40,10 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
+            if (Program.mGroup.Equals("PGV"))
+            {
+                pnKhoa.Visible = true;
+            }
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
@@ -160,7 +164,7 @@ namespace QLDSV.Forms
                 reader.Close();
                 return true;
             }
-            else if (Program.checkExistsAllSite(cmd))
+            else if (Program.checkExistsAllSite(reader, cmd))
             {
                 reader.Close();
                 MessageBox.Show("Mã sinh viên đã tồn tại trên cơ sở khác", "Đóng");
@@ -208,7 +212,7 @@ namespace QLDSV.Forms
 
         private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

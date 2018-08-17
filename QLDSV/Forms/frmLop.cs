@@ -36,6 +36,10 @@ namespace QLDSV.Forms
 
         private void frmLop_Load(object sender, EventArgs e)
         {
+            if (Program.mGroup.Equals("PGV"))
+            {
+                pnKhoa.Visible = true;
+            }
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -122,7 +126,7 @@ namespace QLDSV.Forms
                 reader.Close();
                 return true;
             }
-            else if (Program.checkExistsAllSite(cmd))
+            else if (Program.checkExistsAllSite(reader,cmd))
             {
                 reader.Close();
                 MessageBox.Show("Mã hoặc tên lớp đã tồn tại trên chi nhánh khác", "Đóng");
@@ -133,7 +137,7 @@ namespace QLDSV.Forms
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

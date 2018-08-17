@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tENCNLabel;
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label tENLOPLabel;
             System.Windows.Forms.Label mAKHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLop));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -46,12 +47,12 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tENCNComboBox = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
+            this.pnKhoa = new System.Windows.Forms.Panel();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.lOPBindingSource = new System.Windows.Forms.BindingSource();
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lOPTableAdapter = new QLDSV.DS_QLDSVTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
@@ -70,7 +71,7 @@
             tENLOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnKhoa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
@@ -247,29 +248,29 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 437);
             // 
-            // panel1
+            // pnKhoa
             // 
-            this.panel1.Controls.Add(tENCNLabel);
-            this.panel1.Controls.Add(this.tENCNComboBox);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 42);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(759, 68);
-            this.panel1.TabIndex = 4;
+            this.pnKhoa.Controls.Add(tENCNLabel);
+            this.pnKhoa.Controls.Add(this.cbbKhoa);
+            this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnKhoa.Location = new System.Drawing.Point(0, 42);
+            this.pnKhoa.Name = "pnKhoa";
+            this.pnKhoa.Size = new System.Drawing.Size(759, 68);
+            this.pnKhoa.TabIndex = 4;
+            this.pnKhoa.Visible = false;
             // 
-            // tENCNComboBox
+            // cbbKhoa
             // 
-            this.tENCNComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.v_DSPMBindingSource, "TENCN", true));
-            this.tENCNComboBox.DataSource = this.v_DSPMBindingSource;
-            this.tENCNComboBox.DisplayMember = "TENCN";
-            this.tENCNComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tENCNComboBox.FormattingEnabled = true;
-            this.tENCNComboBox.Location = new System.Drawing.Point(266, 27);
-            this.tENCNComboBox.Name = "tENCNComboBox";
-            this.tENCNComboBox.Size = new System.Drawing.Size(213, 21);
-            this.tENCNComboBox.TabIndex = 1;
-            this.tENCNComboBox.ValueMember = "TENSERVER";
-            this.tENCNComboBox.SelectedIndexChanged += new System.EventHandler(this.tENCNComboBox_SelectedIndexChanged);
+            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(266, 27);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(213, 21);
+            this.cbbKhoa.TabIndex = 1;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.tENCNComboBox_SelectedIndexChanged);
             // 
             // v_DSPMBindingSource
             // 
@@ -418,7 +419,7 @@
             this.ClientSize = new System.Drawing.Size(759, 497);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lOPGridControl);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnKhoa);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -428,8 +429,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmLop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnKhoa.ResumeLayout(false);
+            this.pnKhoa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
@@ -456,7 +457,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnKhoa;
         private System.Windows.Forms.BindingSource lOPBindingSource;
         private DS_QLDSV dS_QLDSV;
         private DS_QLDSVTableAdapters.LOPTableAdapter lOPTableAdapter;
@@ -478,7 +479,7 @@
         private System.Windows.Forms.Button btnCancel;
         private DevExpress.XtraEditors.TextEdit txtTENLOP;
         private DevExpress.XtraEditors.TextEdit txtMALOP;
-        private System.Windows.Forms.ComboBox tENCNComboBox;
+        private System.Windows.Forms.ComboBox cbbKhoa;
         private DevExpress.XtraEditors.TextEdit txtMAKHOA;
     }
 }

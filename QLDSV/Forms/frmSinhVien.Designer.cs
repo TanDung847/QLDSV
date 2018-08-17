@@ -86,8 +86,8 @@
             this.txtMASV = new DevExpress.XtraEditors.TextEdit();
             this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cmbCoSo = new System.Windows.Forms.ComboBox();
+            this.pnKhoa = new System.Windows.Forms.Panel();
+            this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
@@ -119,7 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHO.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMASV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnKhoa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             this.SuspendLayout();
@@ -641,28 +641,29 @@
             // 
             this.v_dslopTableAdapter.ClearBeforeFill = true;
             // 
-            // panel1
+            // pnKhoa
             // 
-            this.panel1.Controls.Add(this.cmbCoSo);
-            this.panel1.Controls.Add(tENCNLabel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 42);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(759, 80);
-            this.panel1.TabIndex = 11;
+            this.pnKhoa.Controls.Add(this.cmbKhoa);
+            this.pnKhoa.Controls.Add(tENCNLabel);
+            this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnKhoa.Location = new System.Drawing.Point(0, 42);
+            this.pnKhoa.Name = "pnKhoa";
+            this.pnKhoa.Size = new System.Drawing.Size(759, 80);
+            this.pnKhoa.TabIndex = 11;
+            this.pnKhoa.Visible = false;
             // 
-            // cmbCoSo
+            // cmbKhoa
             // 
-            this.cmbCoSo.DataSource = this.v_DSPMBindingSource;
-            this.cmbCoSo.DisplayMember = "TENCN";
-            this.cmbCoSo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCoSo.FormattingEnabled = true;
-            this.cmbCoSo.Location = new System.Drawing.Point(240, 34);
-            this.cmbCoSo.Name = "cmbCoSo";
-            this.cmbCoSo.Size = new System.Drawing.Size(388, 21);
-            this.cmbCoSo.TabIndex = 2;
-            this.cmbCoSo.ValueMember = "TENSERVER";
-            this.cmbCoSo.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
+            this.cmbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cmbKhoa.DisplayMember = "TENCN";
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKhoa.FormattingEnabled = true;
+            this.cmbKhoa.Location = new System.Drawing.Point(240, 34);
+            this.cmbKhoa.Name = "cmbKhoa";
+            this.cmbKhoa.Size = new System.Drawing.Size(388, 21);
+            this.cmbKhoa.TabIndex = 2;
+            this.cmbKhoa.ValueMember = "TENSERVER";
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
             // 
             // v_DSPMBindingSource
             // 
@@ -691,7 +692,7 @@
             this.ClientSize = new System.Drawing.Size(759, 587);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sINHVIENGridControl);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnKhoa);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -717,8 +718,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHO.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMASV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnKhoa.ResumeLayout(false);
+            this.pnKhoa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             this.ResumeLayout(false);
@@ -773,11 +774,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colGHICHU;
         private DevExpress.XtraGrid.Columns.GridColumn colNGHIHOC;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnKhoa;
         private DS_DSPM dS_DSPM;
         private System.Windows.Forms.BindingSource v_DSPMBindingSource;
         private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
         private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.ComboBox cmbCoSo;
+        private System.Windows.Forms.ComboBox cmbKhoa;
     }
 }

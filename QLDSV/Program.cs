@@ -53,24 +53,52 @@ namespace QLDSV
                 return 0;
             }
         }
-        public static bool checkExistsAllSite(String strLenh)
+
+        public static SqlConnection KiemTraKetNoi(String servername)
         {
-            SqlDataReader myreader;
+            SqlConnection _conn = new SqlConnection();
+            String _connstr = "Data Source=" + servername + ";Initial Catalog=" +
+                       Program.database + ";User ID=" +
+                      Program.remotelogin + ";password=" + Program.remotepassword;
+            _conn.ConnectionString = _connstr;
+            _conn.Open();
+            return _conn;
+
+        }
+
+        public static bool checkExistsAllSite(SqlDataReader myreader, String strLenh)
+        {
             bool ok = false;
-            String orgServername = servername;
-            String orgConnectionString = connstr;
+            String serverToCheck;
+            
             for (int i = 0; i < bds_dspm.Count; i++)
             {
-                servername = ((DataRowView)Program.bds_dspm[i])["TENSERVER"].ToString().Trim();
-                if (!servername.Equals(orgServername) && KetNoi() != 0)
+                serverToCheck = ((DataRowView)Program.bds_dspm[i])["TENSERVER"].ToString().Trim();
+                SqlConnection _conn;
+                try
                 {
-                    myreader = Program.ExecSqlDataReader(strLenh);
-                    if (myreader != null && myreader.HasRows) ok = true;
+                    _conn = KiemTraKetNoi(serverToCheck);
+                    if (!serverToCheck.Equals(servername))
+                    {
+                        myreader.Close();
+                        SqlCommand sqlcmd = new SqlCommand(strLenh, _conn);
+                        sqlcmd.CommandType = CommandType.Text;
+                        try
+                        {
+                            myreader = sqlcmd.ExecuteReader();
+                            if (myreader != null && myreader.HasRows) ok = true;
+                        }
+                        catch (SqlException ex)
+                        {
+                            _conn.Close();
+                        }
+                    }
+                } catch (Exception e)
+                {
+                    ok = false;
                 }
             }
-            servername = orgServername;
-            connstr = orgConnectionString;
-            KetNoi();
+           
             return ok;
         }
 
@@ -83,7 +111,6 @@ namespace QLDSV
             try
             {
                 myreader = sqlcmd.ExecuteReader(); return myreader;
-
             }
             catch (SqlException ex)
             {
