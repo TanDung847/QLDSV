@@ -93,6 +93,7 @@
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -254,7 +255,7 @@
             // 
             this.sINHVIENGridControl.DataSource = this.sINHVIENBindingSource;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 76);
+            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 78);
             this.sINHVIENGridControl.MainView = this.gridView1;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
             this.sINHVIENGridControl.Size = new System.Drawing.Size(759, 222);
@@ -368,9 +369,10 @@
             this.btnDelete,
             this.btnSave,
             this.btnUndo,
-            this.btnRedo});
+            this.btnRedo,
+            this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 9;
+            this.barManager1.MaxItemId = 10;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -384,7 +386,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem3, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -428,6 +431,7 @@
             this.btnUndo.Id = 7;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
             // bar3
             // 
@@ -447,31 +451,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(759, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(759, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 564);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 569);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(759, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(759, 18);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 527);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(759, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(759, 42);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 527);
             // 
             // barButtonItem1
             // 
@@ -518,7 +522,7 @@
             this.groupBox1.Controls.Add(this.txtMASV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(0, 298);
+            this.groupBox1.Location = new System.Drawing.Point(0, 300);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(759, 223);
             this.groupBox1.TabIndex = 6;
@@ -662,7 +666,7 @@
             this.pnKhoa.Controls.Add(this.cbbKhoa);
             this.pnKhoa.Controls.Add(tENCNLabel);
             this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnKhoa.Location = new System.Drawing.Point(0, 40);
+            this.pnKhoa.Location = new System.Drawing.Point(0, 42);
             this.pnKhoa.Name = "pnKhoa";
             this.pnKhoa.Size = new System.Drawing.Size(759, 36);
             this.pnKhoa.TabIndex = 11;
@@ -701,6 +705,15 @@
             this.tableAdapterManager1.Connection = null;
             this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Tải lại";
+            this.barButtonItem3.Id = 9;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // frmSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,6 +729,7 @@
             this.Name = "frmSinhVien";
             this.Text = "SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSinhVien_FormClosed_1);
             this.Load += new System.EventHandler(this.frmSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
@@ -797,5 +811,6 @@
         private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
         private System.Windows.Forms.ComboBox cbbKhoa;
         private System.Windows.Forms.Button btnGhi;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

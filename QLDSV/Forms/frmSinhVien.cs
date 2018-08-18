@@ -31,7 +31,7 @@ namespace QLDSV.Forms
         }
         private void reload()
         {
-            this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
+            sINHVIENBindingSource.CancelEdit();
             groupBox1.Enabled = false;
             setButtonBarState(true);
         }
@@ -313,8 +313,6 @@ namespace QLDSV.Forms
             {
                 sINHVIENBindingSource.EndEdit();
                 sINHVIENBindingSource.ResetCurrentItem();
-                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
                 reload();
             }
             catch (Exception ex)
@@ -335,6 +333,34 @@ namespace QLDSV.Forms
         {
             this.viTri = sINHVIENBindingSource.Position;
             this.currentMaSv = ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim();
+        }
+
+        private void frmSinhVien_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void frmSinhVien_FormClosed_1(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
+            } catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
+            reload();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            reload();
         }
     }
 }
