@@ -78,5 +78,25 @@ namespace QLDSV
         {
             ShowMdiChildren(typeof(frmDiem));
         }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(XfrmDSSV));
+        }
+
+        private void btnPhieuDiemSinhVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(XfrmPhieuDiemSinhVien));
+        }
+
+        private void btnBangDiemMonHoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(XfrmBangDiemMonHoc));
+        }
+
+        private void btnPhieuDiemThi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(XfrmPhieuDiemThi));
+        }
     }
 }

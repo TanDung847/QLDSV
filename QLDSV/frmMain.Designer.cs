@@ -37,8 +37,10 @@
             this.btnSINHVIEN = new DevExpress.XtraBars.BarButtonItem();
             this.btnMONHOC = new DevExpress.XtraBars.BarButtonItem();
             this.btnDIEM = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -46,6 +48,9 @@
             this.hoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.nhom = new System.Windows.Forms.ToolStripStatusLabel();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btnPhieuDiemThi = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBangDiemMonHoc = new DevExpress.XtraBars.BarButtonItem();
+            this.btnPhieuDiemSinhVien = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -61,9 +66,13 @@
             this.btnLOP,
             this.btnSINHVIEN,
             this.btnMONHOC,
-            this.btnDIEM});
+            this.btnDIEM,
+            this.barButtonItem1,
+            this.btnPhieuDiemThi,
+            this.btnBangDiemMonHoc,
+            this.btnPhieuDiemSinhVien});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 12;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -124,10 +133,20 @@
             this.btnDIEM.Name = "btnDIEM";
             this.btnDIEM.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDIEM_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Danh Sách SV";
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
+            this.ribbonPageGroup3,
             this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Quản trị";
@@ -140,6 +159,15 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnDIEM);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Quản lý";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnPhieuDiemThi);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnBangDiemMonHoc);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnPhieuDiemSinhVien);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "In Ấn";
             // 
             // ribbonPageGroup1
             // 
@@ -186,6 +214,33 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
+            // btnPhieuDiemThi
+            // 
+            this.btnPhieuDiemThi.Caption = "Phiếu Điểm Thi";
+            this.btnPhieuDiemThi.Id = 9;
+            this.btnPhieuDiemThi.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnPhieuDiemThi.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnPhieuDiemThi.Name = "btnPhieuDiemThi";
+            this.btnPhieuDiemThi.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuDiemThi_ItemClick);
+            // 
+            // btnBangDiemMonHoc
+            // 
+            this.btnBangDiemMonHoc.Caption = "Bảng Điểm Môn Học";
+            this.btnBangDiemMonHoc.Id = 10;
+            this.btnBangDiemMonHoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnBangDiemMonHoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnBangDiemMonHoc.Name = "btnBangDiemMonHoc";
+            this.btnBangDiemMonHoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemMonHoc_ItemClick);
+            // 
+            // btnPhieuDiemSinhVien
+            // 
+            this.btnPhieuDiemSinhVien.Caption = "Phiếu Điểm Sinh Viên";
+            this.btnPhieuDiemSinhVien.Id = 11;
+            this.btnPhieuDiemSinhVien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image2")));
+            this.btnPhieuDiemSinhVien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage2")));
+            this.btnPhieuDiemSinhVien.Name = "btnPhieuDiemSinhVien";
+            this.btnPhieuDiemSinhVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuDiemSinhVien_ItemClick);
+            // 
             // frmMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -227,6 +282,11 @@
         private DevExpress.XtraBars.BarButtonItem btnMONHOC;
         private DevExpress.XtraBars.BarButtonItem btnDIEM;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem btnPhieuDiemThi;
+        private DevExpress.XtraBars.BarButtonItem btnBangDiemMonHoc;
+        private DevExpress.XtraBars.BarButtonItem btnPhieuDiemSinhVien;
     }
 }
 
