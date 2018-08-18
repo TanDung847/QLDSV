@@ -16,6 +16,7 @@ namespace QLDSV.Forms
     {
         int viTri = 0;
         bool editMode = false;
+        bool isPGV = false;
         public frmLop()
         {
             InitializeComponent();
@@ -46,7 +47,8 @@ namespace QLDSV.Forms
 
         private void frmLop_Load(object sender, EventArgs e)
         {
-            if (Program.mGroup.Equals("PGV"))
+            isPGV = Program.mGroup.Equals("PGV");
+            if (isPGV)
             {
                 pnKhoa.Visible = true;
             }
@@ -63,7 +65,30 @@ namespace QLDSV.Forms
             groupBox1.Enabled = true;
             setButtonBarState(false);
             lOPBindingSource.AddNew();
-            txtMAKHOA.Text = "CNTT";
+            
+            if (isPGV)
+            {
+                if (cbbKhoa.SelectedIndex == 0)
+                {
+                    txtMAKHOA.Text = "CNTT";
+                }
+                else
+                {
+                    txtMAKHOA.Text = "VT";
+                }
+            }
+            else
+            {
+                if (Program.mKhoa == 0)
+                {
+                    txtMAKHOA.Text = "CNTT";
+                }
+                else
+                {
+                    txtMAKHOA.Text = "VT";
+                }
+            }
+            
         }
 
         private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -117,7 +142,7 @@ namespace QLDSV.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi lưu môn học.\n" + ex.Message, "", MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi lưu lớp.\n" + ex.Message, "", MessageBoxButtons.OK);
                 reload();
                 return;
             }
@@ -129,36 +154,46 @@ namespace QLDSV.Forms
                 return false;
             }
 
-            string cmd = "SELECT * FROM LOP WHERE MALOP = '" + txtMALOP.Text.Trim() + "' OR TENLOP = '" + txtTENLOP.Text.Trim() + "'";
+            string cmd = "declare @ret int; \r\nexec sp_KiemTraLop N'" + txtMALOP.Text.Trim() + "', N'" + txtTENLOP.Text.Trim() + "', @ret OUTPUT\r\nselect @ret";
             SqlDataReader reader = Program.ExecSqlDataReader(cmd);
             if (reader != null && reader.HasRows)
             {
-                MessageBox.Show("Mã hoặc tên lớp đã tồn tại", "Đóng");
-                reader.Close();
-                return true;
-            }
-            else if (Program.checkExistsAllSite(reader,cmd))
-            {
-                reader.Close();
-                MessageBox.Show("Mã hoặc tên lớp đã tồn tại trên chi nhánh khác", "Đóng");
-                return true;
+                while (reader.Read())
+                {
+                    int ret = reader.GetInt32(0);
+                    if (ret == 1)
+                    {
+                        reader.Close();
+                        MessageBox.Show("Mã hoặc tên lớp đã tồn tại", "Đóng");
+                        return true;
+                    } else if (ret == 2)
+                    {
+                        reader.Close();
+                        MessageBox.Show("Mã hoặc tên lớp đã tồn tại trên chi nhánh khác", "Đóng");
+                        return true;
+                    }
+                }
             }
             return false;
         }
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Program.servername = cbbKhoa.SelectedValue.ToString();
-            //if (Program.KetNoi() == 0)
-            //{
-            //    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            //}
-            //else
-            //{
-            //    this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
-            //    this.dS_QLDSV.EnforceConstraints = false;
-            //    this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
-            //}
+            String orgServername = Program.servername;
+            String orgUsername = Program.mlogin;
+            String orgPassword = Program.password;
+            Program.servername = cbbKhoa.SelectedValue.ToString();
+            Program.mlogin = Program.remotelogin;
+            Program.password = Program.remotepassword;
+            if (Program.KetNoi() == 0)
+            {
+                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            } else
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.dS_QLDSV.EnforceConstraints = false;
+                this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

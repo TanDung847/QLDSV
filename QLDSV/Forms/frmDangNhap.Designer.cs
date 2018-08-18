@@ -41,7 +41,7 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.cmbChiNhanh = new System.Windows.Forms.ComboBox();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             tENCNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSPM)).BeginInit();
@@ -53,9 +53,9 @@
             tENCNLabel.AutoSize = true;
             tENCNLabel.Location = new System.Drawing.Point(87, 54);
             tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(85, 13);
+            tENCNLabel.Size = new System.Drawing.Size(35, 13);
             tENCNLabel.TabIndex = 9;
-            tENCNLabel.Text = "TÊN CHI NHÁNH";
+            tENCNLabel.Text = "KHOA";
             // 
             // dS_DSPM
             // 
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtLogin);
             this.groupBox1.Controls.Add(tENCNLabel);
-            this.groupBox1.Controls.Add(this.cmbChiNhanh);
+            this.groupBox1.Controls.Add(this.cbbKhoa);
             this.groupBox1.Location = new System.Drawing.Point(56, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(641, 256);
@@ -147,18 +147,18 @@
             this.txtLogin.Size = new System.Drawing.Size(283, 21);
             this.txtLogin.TabIndex = 11;
             // 
-            // cmbChiNhanh
+            // cbbKhoa
             // 
-            this.cmbChiNhanh.DataSource = this.bdsDSPM;
-            this.cmbChiNhanh.DisplayMember = "TENCN";
-            this.cmbChiNhanh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbChiNhanh.FormattingEnabled = true;
-            this.cmbChiNhanh.Location = new System.Drawing.Point(226, 46);
-            this.cmbChiNhanh.Name = "cmbChiNhanh";
-            this.cmbChiNhanh.Size = new System.Drawing.Size(283, 21);
-            this.cmbChiNhanh.TabIndex = 10;
-            this.cmbChiNhanh.ValueMember = "TENSERVER";
-            this.cmbChiNhanh.SelectedIndexChanged += new System.EventHandler(this.cmbTenCN_SelectedIndexChanged);
+            this.cbbKhoa.DataSource = this.bdsDSPM;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(226, 46);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(283, 21);
+            this.cbbKhoa.TabIndex = 10;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbTenCN_SelectedIndexChanged);
             // 
             // frmDangNhap
             // 
@@ -191,6 +191,6 @@
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLogin;
-        private System.Windows.Forms.ComboBox cmbChiNhanh;
+        private System.Windows.Forms.ComboBox cbbKhoa;
     }
 }

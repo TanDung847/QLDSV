@@ -28,7 +28,7 @@ namespace QLDSV
         public static String passwordDN = "";
         public static String mGroup = "";
         public static String mHoten = "";
-        public static int mChinhanh = 0;
+        public static int mKhoa = 0;
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
         public static frmMain frmChinh;
@@ -119,6 +119,7 @@ namespace QLDSV
                 return null;
             }
         }
+
         public static DataTable ExecSqlDataTable(String cmd)
         {
             DataTable dt = new DataTable();
