@@ -22,11 +22,18 @@ namespace QLDSV.Forms
         public frmLop()
         {
             InitializeComponent();
+            
         }
 
         private void reload()
         {
-            this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            lOPBindingSource.CancelEdit();
+            groupBox1.Enabled = false;
+            setButtonBarState(true);
+        }
+
+        private void reloadWithoutFill()
+        {
             groupBox1.Enabled = false;
             setButtonBarState(true);
         }
@@ -138,9 +145,9 @@ namespace QLDSV.Forms
             {
                 lOPBindingSource.EndEdit();
                 lOPBindingSource.ResetCurrentItem();
-                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.lOPTableAdapter.Update(this.dS_QLDSV);
-                reload();
+                //this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                //this.lOPTableAdapter.Update(this.dS_QLDSV);
+                reloadWithoutFill();
             }
             catch (Exception ex)
             {
@@ -151,12 +158,18 @@ namespace QLDSV.Forms
         }
         private bool isExits()
         {
+            string cmd = "";
             if (editMode && (txtMALOP.Text.Trim().Equals(currentMaLop) && txtTENLOP.Text.Equals(currentTenLop)))
             {
                 return false;
+            } else if (editMode && (txtMALOP.Text.Trim().Equals(currentMaLop)))
+            {
+                cmd = "declare @ret int; \r\nexec sp_KiemTraLop null, N'" + txtTENLOP.Text.Trim() + "', @ret OUTPUT\r\nselect @ret";
+            } else
+            {
+                cmd = "declare @ret int; \r\nexec sp_KiemTraLop N'" + txtMALOP.Text.Trim() + "', null, @ret OUTPUT\r\nselect @ret";
             }
 
-            string cmd = "declare @ret int; \r\nexec sp_KiemTraLop N'" + txtMALOP.Text.Trim() + "', N'" + txtTENLOP.Text.Trim() + "', @ret OUTPUT\r\nselect @ret";
             SqlDataReader reader = Program.ExecSqlDataReader(cmd);
             if (reader != null && reader.HasRows)
             {
@@ -240,6 +253,30 @@ namespace QLDSV.Forms
             {
                 updateDataSource();
             }
+        }
+
+        private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            reload();
+        }
+
+        private void frmLop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Console.WriteLine("End ne");
+            try
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Update(this.dS_QLDSV);
+            } catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            reload();
         }
     }
 }

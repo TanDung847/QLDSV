@@ -59,13 +59,14 @@
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGhi = new System.Windows.Forms.Button();
             this.txtMAKHOA = new DevExpress.XtraEditors.TextEdit();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtTENLOP = new DevExpress.XtraEditors.TextEdit();
             this.txtMALOP = new DevExpress.XtraEditors.TextEdit();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
-            this.btnGhi = new System.Windows.Forms.Button();
+            this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
             tENCNLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -135,9 +136,10 @@
             this.btnEdit,
             this.btnDelete,
             this.btnSave,
-            this.btnUndo});
+            this.btnUndo,
+            this.btnRefresh});
             this.barManager1.MainMenu = this.barMenu;
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 7;
             this.barManager1.StatusBar = this.bar3;
             // 
             // barMenu
@@ -151,7 +153,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRefresh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.barMenu.OptionsBar.MultiLine = true;
             this.barMenu.OptionsBar.UseWholeRow = true;
             this.barMenu.Text = "Main menu";
@@ -195,6 +198,7 @@
             this.btnUndo.Id = 4;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
+            this.btnUndo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUndo_ItemClick);
             // 
             // bar3
             // 
@@ -357,6 +361,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
             // 
+            // btnGhi
+            // 
+            this.btnGhi.BackColor = System.Drawing.Color.Blue;
+            this.btnGhi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGhi.ForeColor = System.Drawing.Color.White;
+            this.btnGhi.Location = new System.Drawing.Point(66, 164);
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.Size = new System.Drawing.Size(75, 23);
+            this.btnGhi.TabIndex = 8;
+            this.btnGhi.Text = "Ghi";
+            this.btnGhi.UseVisualStyleBackColor = false;
+            this.btnGhi.Click += new System.EventHandler(this.btnGhi_Click);
+            // 
             // txtMAKHOA
             // 
             this.txtMAKHOA.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.lOPBindingSource, "MAKH", true));
@@ -405,18 +422,14 @@
             this.tableAdapterManager1.Connection = null;
             this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // btnGhi
+            // btnRefresh
             // 
-            this.btnGhi.BackColor = System.Drawing.Color.Blue;
-            this.btnGhi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGhi.ForeColor = System.Drawing.Color.White;
-            this.btnGhi.Location = new System.Drawing.Point(66, 164);
-            this.btnGhi.Name = "btnGhi";
-            this.btnGhi.Size = new System.Drawing.Size(75, 23);
-            this.btnGhi.TabIndex = 8;
-            this.btnGhi.Text = "Ghi";
-            this.btnGhi.UseVisualStyleBackColor = false;
-            this.btnGhi.Click += new System.EventHandler(this.btnGhi_Click);
+            this.btnRefresh.Caption = "Làm mới";
+            this.btnRefresh.Id = 6;
+            this.btnRefresh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.btnRefresh.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefresh_ItemClick);
             // 
             // frmLop
             // 
@@ -433,6 +446,7 @@
             this.Name = "frmLop";
             this.Text = "LỚP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLop_FormClosed);
             this.Load += new System.EventHandler(this.frmLop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.pnKhoa.ResumeLayout(false);
@@ -487,5 +501,6 @@
         private System.Windows.Forms.ComboBox cbbKhoa;
         private DevExpress.XtraEditors.TextEdit txtMAKHOA;
         private System.Windows.Forms.Button btnGhi;
+        private DevExpress.XtraBars.BarButtonItem btnRefresh;
     }
 }
