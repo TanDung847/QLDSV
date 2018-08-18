@@ -31,11 +31,16 @@ namespace QLDSV.Forms
         private void reload()
         {
             this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
-            groupBox1.Enabled = true;
-            //pnEditor.Enabled = false;
-            //pnTable.Enabled = true;
-            //btnAdd.Enabled = btnEdit.Enabled = btnDelete.Enabled = btnReload.Enabled = btnPrint.Enabled = true;
-            //btnUndo.Enabled = false;
+            groupBox1.Enabled = false;
+            setButtonBarState(true);
+        }
+
+        private void setButtonBarState(bool state)
+        {
+            btnAdd.Enabled = state;
+            btnEdit.Enabled = state;
+            btnDelete.Enabled = state;
+            btnUndo.Enabled = state;
         }
 
         private void frmSinhVien_Load(object sender, EventArgs e)
@@ -62,6 +67,7 @@ namespace QLDSV.Forms
 
         private void btnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            setButtonBarState(false);
             viTri = sINHVIENBindingSource.Position;
             groupBox1.Enabled = true;
             sINHVIENBindingSource.AddNew();
@@ -82,6 +88,7 @@ namespace QLDSV.Forms
 
         private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            setButtonBarState(false);
             editMode = true;
             viTri = sINHVIENBindingSource.Position;
             groupBox1.Enabled = true;
@@ -96,63 +103,63 @@ namespace QLDSV.Forms
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (txtMASV.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã sinh viên không được phép rỗng", "", MessageBoxButtons.OK);
-                txtMASV.Focus();
-                return;
-            }
-            if (txtHO.Text.Trim() == "")
-            {
-                MessageBox.Show("Họ không được phép rỗng", "", MessageBoxButtons.OK);
-                txtHO.Focus();
-                return;
-            }
-            if (txtTEN.Text.Trim() == "")
-            {
-                MessageBox.Show("Tên không được phép rỗng", "", MessageBoxButtons.OK);
-                txtTEN.Focus();
-                return;
-            }
-            if (txtDIACHI.Text.Trim() == "")
-            {
-                MessageBox.Show("Địa chỉ không được phép rỗng", "", MessageBoxButtons.OK);
-                txtDIACHI.Focus();
-                return;
-            }
-            if (dateNGAYSINH.Text.Trim() == "")
-            {
-                MessageBox.Show("Ngày sinh không được phép rỗng", "", MessageBoxButtons.OK);
-                dateNGAYSINH.Focus();
-                return;
-            }
+            //if (txtMASV.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Mã sinh viên không được phép rỗng", "", MessageBoxButtons.OK);
+            //    txtMASV.Focus();
+            //    return;
+            //}
+            //if (txtHO.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Họ không được phép rỗng", "", MessageBoxButtons.OK);
+            //    txtHO.Focus();
+            //    return;
+            //}
+            //if (txtTEN.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Tên không được phép rỗng", "", MessageBoxButtons.OK);
+            //    txtTEN.Focus();
+            //    return;
+            //}
+            //if (txtDIACHI.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Địa chỉ không được phép rỗng", "", MessageBoxButtons.OK);
+            //    txtDIACHI.Focus();
+            //    return;
+            //}
+            //if (dateNGAYSINH.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Ngày sinh không được phép rỗng", "", MessageBoxButtons.OK);
+            //    dateNGAYSINH.Focus();
+            //    return;
+            //}
 
-            //((DataRowView)bdsSV[0])["MALOP"] = cmbMALOP.SelectedText.ToString().Trim();
-            if (!isExists())
-            {
-                try
-                {
-                    sINHVIENBindingSource.EndEdit();
-                    sINHVIENBindingSource.ResetCurrentItem();
-                    this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-                    this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi ghi sinh viên.\n" + ex.Message, "", MessageBoxButtons.OK);
-                    return;
-                }
-                //gcSV.Enabled = true;
-                //btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnPrint.Enabled = true;
-                //btnGhi.Enabled = btnUndo.Enabled = false;
+            ////((DataRowView)bdsSV[0])["MALOP"] = cmbMALOP.SelectedText.ToString().Trim();
+            //if (!isExists())
+            //{
+            //    try
+            //    {
+            //        sINHVIENBindingSource.EndEdit();
+            //        sINHVIENBindingSource.ResetCurrentItem();
+            //        this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+            //        this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Lỗi ghi sinh viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+            //        return;
+            //    }
+            //    //gcSV.Enabled = true;
+            //    //btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnPrint.Enabled = true;
+            //    //btnGhi.Enabled = btnUndo.Enabled = false;
 
-                groupBox1.Enabled = false;
-                editMode = false;
-            }
+            //    groupBox1.Enabled = false;
+            //    editMode = false;
+            //}
         }
         private bool isExists()
         {
-            if (editMode && txtMASV.Text == ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim())
+            if (editMode && txtMASV.Text.Trim() == ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim())
             {
                 return false;
             }
@@ -213,6 +220,84 @@ namespace QLDSV.Forms
         private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnGhi_Click(object sender, EventArgs e)
+        {
+            if (txtMASV.Text.Trim() == "")
+            {
+                MessageBox.Show("Mã sinh viên không được phép rỗng", "", MessageBoxButtons.OK);
+                txtMASV.Focus();
+                return;
+            }
+            if (txtHO.Text.Trim() == "")
+            {
+                MessageBox.Show("Họ không được phép rỗng", "", MessageBoxButtons.OK);
+                txtHO.Focus();
+                return;
+            }
+            if (txtTEN.Text.Trim() == "")
+            {
+                MessageBox.Show("Tên không được phép rỗng", "", MessageBoxButtons.OK);
+                txtTEN.Focus();
+                return;
+            }
+            if (txtDIACHI.Text.Trim() == "")
+            {
+                MessageBox.Show("Địa chỉ không được phép rỗng", "", MessageBoxButtons.OK);
+                txtDIACHI.Focus();
+                return;
+            }
+            if (dateNGAYSINH.Text.Trim() == "")
+            {
+                MessageBox.Show("Ngày sinh không được phép rỗng", "", MessageBoxButtons.OK);
+                dateNGAYSINH.Focus();
+                return;
+            }
+
+            //((DataRowView)bdsSV[0])["MALOP"] = cmbMALOP.SelectedText.ToString().Trim();
+            if (!isExists())
+            {
+                updateDataSource();
+            }
+            }
+
+        private void btnDelete_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc muốn xóa sinh viên có mã " + ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim() + " không?", "Xác nhận",
+                       MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                sINHVIENBindingSource.RemoveAt(viTri);
+                updateDataSource();
+            }
+        }
+        private void updateDataSource()
+        {
+            try
+            {
+                sINHVIENBindingSource.EndEdit();
+                sINHVIENBindingSource.ResetCurrentItem();
+                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
+                reload();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi ghi sinh viên.\n" + ex.Message, "", MessageBoxButtons.OK);
+                reload();
+                return;
+            }
+            //gcSV.Enabled = true;
+            //btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = btnReload.Enabled = btnPrint.Enabled = true;
+            //btnGhi.Enabled = btnUndo.Enabled = false;
+
+            groupBox1.Enabled = false;
+            editMode = false;
+        }
+
+        private void sINHVIENGridControl_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.viTri = sINHVIENBindingSource.Position;
         }
     }
 }

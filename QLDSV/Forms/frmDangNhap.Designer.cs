@@ -129,6 +129,7 @@
             this.txtPass.PasswordChar = '*';
             this.txtPass.Size = new System.Drawing.Size(283, 21);
             this.txtPass.TabIndex = 13;
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPass_KeyDown);
             // 
             // label1
             // 
@@ -163,11 +164,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(753, 348);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmDangNhap";
             this.Text = "ĐĂNG NHẬP";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmDangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSPM)).EndInit();

@@ -24,6 +24,16 @@ namespace QLDSV.Forms
         private void reload()
         {
             this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            groupBox1.Enabled = false;
+            setButtonBarState(true);
+        }
+
+        private void setButtonBarState(bool state)
+        {
+            btnAdd.Enabled = state;
+            btnEdit.Enabled = state;
+            btnDelete.Enabled = state;
+            btnUndo.Enabled = state;
         }
 
         private void lOPBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -51,12 +61,14 @@ namespace QLDSV.Forms
         private void btnAdd_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             groupBox1.Enabled = true;
+            setButtonBarState(false);
             lOPBindingSource.AddNew();
             txtMAKHOA.Text = "CNTT";
         }
 
         private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            setButtonBarState(false);
             editMode = true;
             groupBox1.Enabled = true;
         }
@@ -74,23 +86,23 @@ namespace QLDSV.Forms
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (txtMALOP.Text.Trim() == "")
-            {
-                MessageBox.Show("Mã lớp không được thiếu!", "", MessageBoxButtons.OK);
-                txtMALOP.Focus();
-                return;
-            }
+            //if (txtMALOP.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Mã lớp không được thiếu!", "", MessageBoxButtons.OK);
+            //    txtMALOP.Focus();
+            //    return;
+            //}
 
-            if (txtTENLOP.Text.Trim() == "")
-            {
-                MessageBox.Show("Tên lớp không được thiếu!", "", MessageBoxButtons.OK);
-                txtTENLOP.Focus();
-                return;
-            }
-            if (!isExits())
-            {
-                updateDataSource();
-            }
+            //if (txtTENLOP.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("Tên lớp không được thiếu!", "", MessageBoxButtons.OK);
+            //    txtTENLOP.Focus();
+            //    return;
+            //}
+            //if (!isExits())
+            //{
+            //    updateDataSource();
+            //}
         }
 
         private void updateDataSource()
@@ -102,7 +114,6 @@ namespace QLDSV.Forms
                 this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.lOPTableAdapter.Update(this.dS_QLDSV);
                 reload();
-                groupBox1.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -113,7 +124,7 @@ namespace QLDSV.Forms
         }
         private bool isExits()
         {
-            if (editMode && (txtMALOP.Text == ((DataRowView)lOPBindingSource[viTri])["MALOP"].ToString().Trim() || txtTENLOP.Text == ((DataRowView)lOPBindingSource[viTri])["TENLOP"].ToString().Trim()))
+            if (editMode && (txtMALOP.Text.Trim() == ((DataRowView)lOPBindingSource[viTri])["MALOP"].ToString().Trim() || txtTENLOP.Text == ((DataRowView)lOPBindingSource[viTri])["TENLOP"].ToString().Trim()))
             {
                 return false;
             }
@@ -137,7 +148,17 @@ namespace QLDSV.Forms
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            //Program.servername = cbbKhoa.SelectedValue.ToString();
+            //if (Program.KetNoi() == 0)
+            //{
+            //    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+            //}
+            //else
+            //{
+            //    this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+            //    this.dS_QLDSV.EnforceConstraints = false;
+            //    this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -148,6 +169,27 @@ namespace QLDSV.Forms
         private void lOPGridControl_MouseClick(object sender, MouseEventArgs e)
         {
             this.viTri = lOPBindingSource.Position;
+        }
+
+        private void btnGhi_Click(object sender, EventArgs e)
+        {
+            if (txtMALOP.Text.Trim() == "")
+            {
+                MessageBox.Show("Mã lớp không được thiếu!", "", MessageBoxButtons.OK);
+                txtMALOP.Focus();
+                return;
+            }
+
+            if (txtTENLOP.Text.Trim() == "")
+            {
+                MessageBox.Show("Tên lớp không được thiếu!", "", MessageBoxButtons.OK);
+                txtTENLOP.Focus();
+                return;
+            }
+            if (!isExits())
+            {
+                updateDataSource();
+            }
         }
     }
 }

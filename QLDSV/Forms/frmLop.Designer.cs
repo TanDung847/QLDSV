@@ -35,13 +35,12 @@
             System.Windows.Forms.Label mAKHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLop));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barMenu = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRedo = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -66,6 +65,7 @@
             this.txtMALOP = new DevExpress.XtraEditors.TextEdit();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
+            this.btnGhi = new System.Windows.Forms.Button();
             tENCNLabel = new System.Windows.Forms.Label();
             mALOPLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -89,41 +89,41 @@
             tENCNLabel.AutoSize = true;
             tENCNLabel.Location = new System.Drawing.Point(216, 30);
             tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(44, 13);
+            tENCNLabel.Size = new System.Drawing.Size(31, 13);
             tENCNLabel.TabIndex = 0;
-            tENCNLabel.Text = "TENCN:";
+            tENCNLabel.Text = "Khoa";
             // 
             // mALOPLabel
             // 
             mALOPLabel.AutoSize = true;
             mALOPLabel.Location = new System.Drawing.Point(16, 34);
             mALOPLabel.Name = "mALOPLabel";
-            mALOPLabel.Size = new System.Drawing.Size(45, 13);
+            mALOPLabel.Size = new System.Drawing.Size(38, 13);
             mALOPLabel.TabIndex = 0;
-            mALOPLabel.Text = "MALOP:";
+            mALOPLabel.Text = "Mã lớp";
             // 
             // tENLOPLabel
             // 
             tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(12, 83);
+            tENLOPLabel.Location = new System.Drawing.Point(12, 78);
             tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(49, 13);
+            tENLOPLabel.Size = new System.Drawing.Size(42, 13);
             tENLOPLabel.TabIndex = 2;
-            tENLOPLabel.Text = "TENLOP:";
+            tENLOPLabel.Text = "Tên lớp";
             // 
             // mAKHLabel
             // 
             mAKHLabel.AutoSize = true;
-            mAKHLabel.Location = new System.Drawing.Point(472, 49);
+            mAKHLabel.Location = new System.Drawing.Point(13, 122);
             mAKHLabel.Name = "mAKHLabel";
-            mAKHLabel.Size = new System.Drawing.Size(39, 13);
+            mAKHLabel.Size = new System.Drawing.Size(47, 13);
             mAKHLabel.TabIndex = 6;
-            mAKHLabel.Text = "MAKH:";
+            mAKHLabel.Text = "Mã khoa";
             // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar2,
+            this.barMenu,
             this.bar3});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
@@ -135,32 +135,30 @@
             this.btnEdit,
             this.btnDelete,
             this.btnSave,
-            this.btnUndo,
-            this.btnRedo});
-            this.barManager1.MainMenu = this.bar2;
+            this.btnUndo});
+            this.barManager1.MainMenu = this.barMenu;
             this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
             // 
-            // bar2
+            // barMenu
             // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barMenu.BarName = "Main menu";
+            this.barMenu.DockCol = 0;
+            this.barMenu.DockRow = 0;
+            this.barMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRedo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            this.barMenu.OptionsBar.MultiLine = true;
+            this.barMenu.OptionsBar.UseWholeRow = true;
+            this.barMenu.Text = "Main menu";
             // 
             // btnAdd
             // 
-            this.btnAdd.Caption = "Add";
+            this.btnAdd.Caption = "Thêm";
             this.btnAdd.Id = 0;
             this.btnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.Image")));
             this.btnAdd.Name = "btnAdd";
@@ -168,7 +166,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Caption = "Edit";
+            this.btnEdit.Caption = "Sửa";
             this.btnEdit.Id = 1;
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Name = "btnEdit";
@@ -176,7 +174,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Caption = "Delete";
+            this.btnDelete.Caption = "Xóa";
             this.btnDelete.Id = 2;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
             this.btnDelete.Name = "btnDelete";
@@ -184,25 +182,19 @@
             // 
             // btnSave
             // 
-            this.btnSave.Caption = "Save";
+            this.btnSave.Caption = "Ghi";
             this.btnSave.Id = 3;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
             this.btnSave.Name = "btnSave";
+            this.btnSave.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
             // btnUndo
             // 
-            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Caption = "Phục hồi";
             this.btnUndo.Id = 4;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Caption = "Redo";
-            this.btnRedo.Id = 5;
-            this.btnRedo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRedo.ImageOptions.Image")));
-            this.btnRedo.Name = "btnRedo";
             // 
             // bar3
             // 
@@ -348,6 +340,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGhi);
             this.groupBox1.Controls.Add(mAKHLabel);
             this.groupBox1.Controls.Add(this.txtMAKHOA);
             this.groupBox1.Controls.Add(this.btnCancel);
@@ -362,21 +355,21 @@
             this.groupBox1.Size = new System.Drawing.Size(759, 216);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Thông tin chi tiết";
             // 
             // txtMAKHOA
             // 
             this.txtMAKHOA.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.lOPBindingSource, "MAKH", true));
             this.txtMAKHOA.Enabled = false;
-            this.txtMAKHOA.Location = new System.Drawing.Point(517, 46);
+            this.txtMAKHOA.Location = new System.Drawing.Point(66, 119);
             this.txtMAKHOA.MenuManager = this.barManager1;
             this.txtMAKHOA.Name = "txtMAKHOA";
-            this.txtMAKHOA.Size = new System.Drawing.Size(100, 20);
+            this.txtMAKHOA.Size = new System.Drawing.Size(262, 20);
             this.txtMAKHOA.TabIndex = 7;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(45, 151);
+            this.btnCancel.Location = new System.Drawing.Point(147, 164);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 6;
@@ -387,10 +380,10 @@
             // txtTENLOP
             // 
             this.txtTENLOP.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.lOPBindingSource, "TENLOP", true));
-            this.txtTENLOP.Location = new System.Drawing.Point(67, 80);
+            this.txtTENLOP.Location = new System.Drawing.Point(67, 75);
             this.txtTENLOP.MenuManager = this.barManager1;
             this.txtTENLOP.Name = "txtTENLOP";
-            this.txtTENLOP.Size = new System.Drawing.Size(100, 20);
+            this.txtTENLOP.Size = new System.Drawing.Size(261, 20);
             this.txtTENLOP.TabIndex = 3;
             // 
             // txtMALOP
@@ -399,7 +392,7 @@
             this.txtMALOP.Location = new System.Drawing.Point(67, 31);
             this.txtMALOP.MenuManager = this.barManager1;
             this.txtMALOP.Name = "txtMALOP";
-            this.txtMALOP.Size = new System.Drawing.Size(100, 20);
+            this.txtMALOP.Size = new System.Drawing.Size(261, 20);
             this.txtMALOP.TabIndex = 1;
             // 
             // v_DSPMTableAdapter
@@ -411,6 +404,19 @@
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.Connection = null;
             this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // btnGhi
+            // 
+            this.btnGhi.BackColor = System.Drawing.Color.Blue;
+            this.btnGhi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGhi.ForeColor = System.Drawing.Color.White;
+            this.btnGhi.Location = new System.Drawing.Point(66, 164);
+            this.btnGhi.Name = "btnGhi";
+            this.btnGhi.Size = new System.Drawing.Size(75, 23);
+            this.btnGhi.TabIndex = 8;
+            this.btnGhi.Text = "Ghi";
+            this.btnGhi.UseVisualStyleBackColor = false;
+            this.btnGhi.Click += new System.EventHandler(this.btnGhi_Click);
             // 
             // frmLop
             // 
@@ -450,7 +456,7 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.Bar barMenu;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
@@ -471,7 +477,6 @@
         private DevExpress.XtraBars.BarButtonItem btnDelete;
         private DevExpress.XtraBars.BarButtonItem btnSave;
         private DevExpress.XtraBars.BarButtonItem btnUndo;
-        private DevExpress.XtraBars.BarButtonItem btnRedo;
         private DS_DSPM dS_DSPM;
         private System.Windows.Forms.BindingSource v_DSPMBindingSource;
         private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
@@ -481,5 +486,6 @@
         private DevExpress.XtraEditors.TextEdit txtMALOP;
         private System.Windows.Forms.ComboBox cbbKhoa;
         private DevExpress.XtraEditors.TextEdit txtMAKHOA;
+        private System.Windows.Forms.Button btnGhi;
     }
 }

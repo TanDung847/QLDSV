@@ -89,5 +89,13 @@ namespace QLDSV.Forms
         {
             Close();
         }
+
+        private void txtPass_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDangNhap_Click(sender, e);
+            }
+        }
     }
 }
