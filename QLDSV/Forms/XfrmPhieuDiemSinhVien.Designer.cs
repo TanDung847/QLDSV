@@ -44,11 +44,11 @@
             // ho_va_TenLabel
             // 
             ho_va_TenLabel.AutoSize = true;
-            ho_va_TenLabel.Location = new System.Drawing.Point(135, 35);
+            ho_va_TenLabel.Location = new System.Drawing.Point(91, 34);
             ho_va_TenLabel.Name = "ho_va_TenLabel";
-            ho_va_TenLabel.Size = new System.Drawing.Size(60, 13);
+            ho_va_TenLabel.Size = new System.Drawing.Size(41, 13);
             ho_va_TenLabel.TabIndex = 0;
-            ho_va_TenLabel.Text = "Ho va Ten:";
+            ho_va_TenLabel.Text = "Họ Tên";
             // 
             // dS_QLDSV
             // 
@@ -80,16 +80,17 @@
             // 
             this.cbbMASV.DataSource = this.v_dssvBindingSource;
             this.cbbMASV.DisplayMember = "Ho va Ten";
+            this.cbbMASV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMASV.FormattingEnabled = true;
-            this.cbbMASV.Location = new System.Drawing.Point(201, 32);
+            this.cbbMASV.Location = new System.Drawing.Point(157, 31);
             this.cbbMASV.Name = "cbbMASV";
-            this.cbbMASV.Size = new System.Drawing.Size(121, 21);
+            this.cbbMASV.Size = new System.Drawing.Size(224, 21);
             this.cbbMASV.TabIndex = 1;
             this.cbbMASV.ValueMember = "MASV";
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(182, 99);
+            this.btnIn.Location = new System.Drawing.Point(203, 84);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(102, 24);
             this.btnIn.TabIndex = 2;
@@ -101,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 318);
+            this.ClientSize = new System.Drawing.Size(534, 135);
             this.Controls.Add(this.btnIn);
             this.Controls.Add(ho_va_TenLabel);
             this.Controls.Add(this.cbbMASV);

@@ -51,7 +51,10 @@ namespace QLDSV
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Close();
+            frmDangNhap frmDangNhap = new frmDangNhap();
+            frmDangNhap.Closed += (s, args) => this.Close();
+            frmDangNhap.Show();
+            this.Hide();
         }
 
         private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -80,7 +80,9 @@ namespace QLDSV.Forms
             myReader.Close();
             Program.conn.Close();
             Form frmMain = new frmMain();
+            frmMain.Closed += (s, args) => this.Close();
             frmMain.Show();
+            this.Hide();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

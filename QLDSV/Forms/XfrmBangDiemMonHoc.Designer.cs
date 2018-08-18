@@ -61,29 +61,32 @@
             // tENKHLabel
             // 
             tENKHLabel.AutoSize = true;
-            tENKHLabel.Location = new System.Drawing.Point(189, 47);
+            tENKHLabel.Location = new System.Drawing.Point(163, 15);
             tENKHLabel.Name = "tENKHLabel";
-            tENKHLabel.Size = new System.Drawing.Size(43, 13);
+            tENKHLabel.Size = new System.Drawing.Size(31, 13);
             tENKHLabel.TabIndex = 0;
-            tENKHLabel.Text = "TENKH:";
+            tENKHLabel.Text = "Khoa";
+            tENKHLabel.Click += new System.EventHandler(this.tENKHLabel_Click);
             // 
             // tenlopLabel
             // 
             tenlopLabel.AutoSize = true;
-            tenlopLabel.Location = new System.Drawing.Point(191, 109);
+            tenlopLabel.Location = new System.Drawing.Point(163, 69);
             tenlopLabel.Name = "tenlopLabel";
-            tenlopLabel.Size = new System.Drawing.Size(41, 13);
+            tenlopLabel.Size = new System.Drawing.Size(24, 13);
             tenlopLabel.TabIndex = 1;
-            tenlopLabel.Text = "tenlop:";
+            tenlopLabel.Text = "Lớp";
+            tenlopLabel.Click += new System.EventHandler(this.tenlopLabel_Click);
             // 
             // mAMHLabel
             // 
             mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(191, 151);
+            mAMHLabel.Location = new System.Drawing.Point(163, 111);
             mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(41, 13);
+            mAMHLabel.Size = new System.Drawing.Size(48, 13);
             mAMHLabel.TabIndex = 4;
-            mAMHLabel.Text = "MAMH:";
+            mAMHLabel.Text = "Môn Học";
+            mAMHLabel.Click += new System.EventHandler(this.mAMHLabel_Click);
             // 
             // pnKhoa
             // 
@@ -92,7 +95,7 @@
             this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnKhoa.Location = new System.Drawing.Point(0, 0);
             this.pnKhoa.Name = "pnKhoa";
-            this.pnKhoa.Size = new System.Drawing.Size(680, 100);
+            this.pnKhoa.Size = new System.Drawing.Size(680, 52);
             this.pnKhoa.TabIndex = 0;
             // 
             // cbbMAKHOA
@@ -101,7 +104,7 @@
             this.cbbMAKHOA.DisplayMember = "TENKH";
             this.cbbMAKHOA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMAKHOA.FormattingEnabled = true;
-            this.cbbMAKHOA.Location = new System.Drawing.Point(238, 44);
+            this.cbbMAKHOA.Location = new System.Drawing.Point(238, 12);
             this.cbbMAKHOA.Name = "cbbMAKHOA";
             this.cbbMAKHOA.Size = new System.Drawing.Size(258, 21);
             this.cbbMAKHOA.TabIndex = 1;
@@ -148,7 +151,7 @@
             this.cbbMALOP.DisplayMember = "tenlop";
             this.cbbMALOP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMALOP.FormattingEnabled = true;
-            this.cbbMALOP.Location = new System.Drawing.Point(238, 106);
+            this.cbbMALOP.Location = new System.Drawing.Point(238, 66);
             this.cbbMALOP.Name = "cbbMALOP";
             this.cbbMALOP.Size = new System.Drawing.Size(258, 21);
             this.cbbMALOP.TabIndex = 2;
@@ -156,7 +159,7 @@
             // 
             // btnIn
             // 
-            this.btnIn.Location = new System.Drawing.Point(251, 239);
+            this.btnIn.Location = new System.Drawing.Point(421, 148);
             this.btnIn.Name = "btnIn";
             this.btnIn.Size = new System.Drawing.Size(75, 23);
             this.btnIn.TabIndex = 3;
@@ -179,7 +182,7 @@
             this.cbbMAMH.DisplayMember = "TENMH";
             this.cbbMAMH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMAMH.FormattingEnabled = true;
-            this.cbbMAMH.Location = new System.Drawing.Point(238, 148);
+            this.cbbMAMH.Location = new System.Drawing.Point(238, 108);
             this.cbbMAMH.Name = "cbbMAMH";
             this.cbbMAMH.Size = new System.Drawing.Size(258, 21);
             this.cbbMAMH.TabIndex = 5;
@@ -187,7 +190,7 @@
             // 
             // numberLan
             // 
-            this.numberLan.Location = new System.Drawing.Point(238, 188);
+            this.numberLan.Location = new System.Drawing.Point(238, 148);
             this.numberLan.Maximum = new decimal(new int[] {
             2,
             0,
@@ -199,7 +202,7 @@
             0,
             0});
             this.numberLan.Name = "numberLan";
-            this.numberLan.Size = new System.Drawing.Size(120, 21);
+            this.numberLan.Size = new System.Drawing.Size(37, 21);
             this.numberLan.TabIndex = 6;
             this.numberLan.Value = new decimal(new int[] {
             1,
@@ -210,17 +213,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(192, 195);
+            this.label1.Location = new System.Drawing.Point(163, 150);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Lần Thi";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // XfrmBangDiemMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 368);
+            this.ClientSize = new System.Drawing.Size(680, 235);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numberLan);
             this.Controls.Add(mAMHLabel);

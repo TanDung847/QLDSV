@@ -40,5 +40,25 @@ namespace QLDSV.Forms
             ReportPrintTool print = new ReportPrintTool(xtrp_BangDiemMonHoc);
             print.ShowPreviewDialog();
         }
+
+        private void mAMHLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tenlopLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tENKHLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
