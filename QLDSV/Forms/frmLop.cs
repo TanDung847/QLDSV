@@ -17,6 +17,8 @@ namespace QLDSV.Forms
         int viTri = 0;
         bool editMode = false;
         bool isPGV = false;
+        String currentMaLop;
+        String currentTenLop;
         public frmLop()
         {
             InitializeComponent();
@@ -149,7 +151,7 @@ namespace QLDSV.Forms
         }
         private bool isExits()
         {
-            if (editMode && (txtMALOP.Text.Trim() == ((DataRowView)lOPBindingSource[viTri])["MALOP"].ToString().Trim() || txtTENLOP.Text == ((DataRowView)lOPBindingSource[viTri])["TENLOP"].ToString().Trim()))
+            if (editMode && (txtMALOP.Text.Trim().Equals(currentMaLop) && txtTENLOP.Text.Equals(currentTenLop)))
             {
                 return false;
             }
@@ -169,30 +171,41 @@ namespace QLDSV.Forms
                     } else if (ret == 2)
                     {
                         reader.Close();
-                        MessageBox.Show("Mã hoặc tên lớp đã tồn tại trên chi nhánh khác", "Đóng");
+                        MessageBox.Show("Mã hoặc tên lớp đã tồn tại ở khoa khác", "Đóng");
                         return true;
                     }
                 }
             }
+            reader.Close();
             return false;
         }
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String orgServername = Program.servername;
-            String orgUsername = Program.mlogin;
-            String orgPassword = Program.password;
-            Program.servername = cbbKhoa.SelectedValue.ToString();
-            Program.mlogin = Program.remotelogin;
-            Program.password = Program.remotepassword;
-            if (Program.KetNoi() == 0)
+            try
             {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            } else
+                String orgServername = Program.servername;
+                String orgMLogin = Program.mlogin;
+                String orgPassword = Program.password;
+                Program.servername = cbbKhoa.SelectedValue.ToString();
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+                if (Program.KetNoi() == 0)
+                {
+                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.dS_QLDSV.EnforceConstraints = false;
+                    this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+                }
+                Program.servername = orgServername;
+                Program.mlogin = orgMLogin;
+                Program.password = orgPassword;
+            } catch (Exception ex)
             {
-                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.dS_QLDSV.EnforceConstraints = false;
-                this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+
             }
         }
 
@@ -204,6 +217,8 @@ namespace QLDSV.Forms
         private void lOPGridControl_MouseClick(object sender, MouseEventArgs e)
         {
             this.viTri = lOPBindingSource.Position;
+            this.currentTenLop = ((DataRowView)lOPBindingSource[viTri])["TENLOP"].ToString().Trim();
+            this.currentMaLop = ((DataRowView)lOPBindingSource[viTri])["MALOP"].ToString().Trim();
         }
 
         private void btnGhi_Click(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace QLDSV.Forms
     {
         int viTri = 0;
         bool editMode = false;
+        String currentMaSv;
         public frmSinhVien()
         {
             InitializeComponent();
@@ -159,23 +160,31 @@ namespace QLDSV.Forms
         }
         private bool isExists()
         {
-            if (editMode && txtMASV.Text.Trim() == ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim())
+            Console.WriteLine(currentMaSv);
+            if (editMode && txtMASV.Text.Trim() == currentMaSv)
             {
                 return false;
             }
-            string cmd = "SELECT MASV FROM SINHVIEN WHERE MASV = '" + txtMASV.Text.Trim() + "'";
+            string cmd = "declare @ret int; \r\nexec sp_KiemTraSinhVien N'" + txtMASV.Text.Trim() + "', @ret OUTPUT\r\nselect @ret";
             SqlDataReader reader = Program.ExecSqlDataReader(cmd);
             if (reader != null && reader.HasRows)
             {
-                MessageBox.Show("Mã sinh viên đã tồn tại", "Đóng");
-                reader.Close();
-                return true;
-            }
-            else if (Program.checkExistsAllSite(reader, cmd))
-            {
-                reader.Close();
-                MessageBox.Show("Mã sinh viên đã tồn tại trên cơ sở khác", "Đóng");
-                return true;
+                while (reader.Read())
+                {
+                    int ret = reader.GetInt32(0);
+                    if (ret == 1)
+                    {
+                        MessageBox.Show("Mã sinh viên đã tồn tại", "Đóng");
+                        reader.Close();
+                        return true;
+                    }
+                    else if (ret == 2)
+                    {
+                        reader.Close();
+                        MessageBox.Show("Mã sinh viên đã tồn tại trên khoa khác", "Đóng");
+                        return true;
+                    }
+                }
             }
             reader.Close();
             return false;
@@ -219,7 +228,34 @@ namespace QLDSV.Forms
 
         private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            try
+            {
+                String orgServername = Program.servername;
+                String orgMLogin = Program.mlogin;
+                String orgPassword = Program.password;
+                Program.servername = cbbKhoa.SelectedValue.ToString();
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+                if (Program.KetNoi() == 0)
+                {
+                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
+                    this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.dS_QLDSV.EnforceConstraints = false;
+                    this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
+                }
+                Program.servername = orgServername;
+                Program.mlogin = orgMLogin;
+                Program.password = orgPassword;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnGhi_Click(object sender, EventArgs e)
@@ -298,6 +334,7 @@ namespace QLDSV.Forms
         private void sINHVIENGridControl_MouseClick(object sender, MouseEventArgs e)
         {
             this.viTri = sINHVIENBindingSource.Position;
+            this.currentMaSv = ((DataRowView)sINHVIENBindingSource[viTri])["MASV"].ToString().Trim();
         }
     }
 }

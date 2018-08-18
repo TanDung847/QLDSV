@@ -64,7 +64,6 @@
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnUndo = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRedo = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -72,6 +71,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRedo = new DevExpress.XtraBars.BarButtonItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnGhi = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -88,7 +88,7 @@
             this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.pnKhoa = new System.Windows.Forms.Panel();
-            this.cmbKhoa = new System.Windows.Forms.ComboBox();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
@@ -254,7 +254,7 @@
             // 
             this.sINHVIENGridControl.DataSource = this.sINHVIENBindingSource;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 78);
+            this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 76);
             this.sINHVIENGridControl.MainView = this.gridView1;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
             this.sINHVIENGridControl.Size = new System.Drawing.Size(759, 222);
@@ -429,13 +429,6 @@
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
             // 
-            // btnRedo
-            // 
-            this.btnRedo.Caption = "Redo";
-            this.btnRedo.Id = 8;
-            this.btnRedo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRedo.ImageOptions.Image")));
-            this.btnRedo.Name = "btnRedo";
-            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -454,31 +447,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(759, 42);
+            this.barDockControlTop.Size = new System.Drawing.Size(759, 40);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 569);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 564);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(759, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(759, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 527);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 524);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(759, 42);
+            this.barDockControlRight.Location = new System.Drawing.Point(759, 40);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 527);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 524);
             // 
             // barButtonItem1
             // 
@@ -491,6 +484,13 @@
             this.barButtonItem2.Caption = "barButtonItem2";
             this.barButtonItem2.Id = 2;
             this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Caption = "Redo";
+            this.btnRedo.Id = 8;
+            this.btnRedo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRedo.ImageOptions.Image")));
+            this.btnRedo.Name = "btnRedo";
             // 
             // groupBox1
             // 
@@ -518,7 +518,7 @@
             this.groupBox1.Controls.Add(this.txtMASV);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(0, 300);
+            this.groupBox1.Location = new System.Drawing.Point(0, 298);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(759, 223);
             this.groupBox1.TabIndex = 6;
@@ -659,27 +659,27 @@
             // 
             // pnKhoa
             // 
-            this.pnKhoa.Controls.Add(this.cmbKhoa);
+            this.pnKhoa.Controls.Add(this.cbbKhoa);
             this.pnKhoa.Controls.Add(tENCNLabel);
             this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnKhoa.Location = new System.Drawing.Point(0, 42);
+            this.pnKhoa.Location = new System.Drawing.Point(0, 40);
             this.pnKhoa.Name = "pnKhoa";
             this.pnKhoa.Size = new System.Drawing.Size(759, 36);
             this.pnKhoa.TabIndex = 11;
             this.pnKhoa.Visible = false;
             // 
-            // cmbKhoa
+            // cbbKhoa
             // 
-            this.cmbKhoa.DataSource = this.v_DSPMBindingSource;
-            this.cmbKhoa.DisplayMember = "TENCN";
-            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(241, 6);
-            this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(244, 21);
-            this.cmbKhoa.TabIndex = 2;
-            this.cmbKhoa.ValueMember = "TENSERVER";
-            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
+            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(241, 6);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(244, 21);
+            this.cbbKhoa.TabIndex = 2;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
             // 
             // v_DSPMBindingSource
             // 
@@ -795,7 +795,7 @@
         private System.Windows.Forms.BindingSource v_DSPMBindingSource;
         private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
         private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.ComboBox cmbKhoa;
+        private System.Windows.Forms.ComboBox cbbKhoa;
         private System.Windows.Forms.Button btnGhi;
     }
 }
