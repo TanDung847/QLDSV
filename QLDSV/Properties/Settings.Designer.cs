@@ -26,7 +26,7 @@ namespace QLDSV.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CAR7DK5;Initial Catalog=QLDSV;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NTANDUNG;Initial Catalog=QLDSV;Integrated Security=True")]
         public string QLDSVConnectionString {
             get {
                 return ((string)(this["QLDSVConnectionString"]));
@@ -36,7 +36,7 @@ namespace QLDSV.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CAR7DK5\\SRV_1;Initial Catalog=QLDSV;Persist Security Info=Tru" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NTANDUNG\\SRV_1;Initial Catalog=QLDSV;Persist Security Info=Tru" +
             "e;User ID=SUPPORT_CONNECT")]
         public string QLDSVConnectionString1 {
             get {

@@ -51,6 +51,8 @@ namespace QLDSV.Forms
             }
             Program.mKhoa = cbbKhoa.SelectedIndex;
             Program.bds_dspm = bdsDSPM;
+            Program.mloginDN = Program.mlogin;
+            Program.passwordDN = Program.password;
             SqlDataReader myReader;
             String strLenh = "exec SP_DANGNHAP '" + Program.mlogin + "'";
             myReader = Program.ExecSqlDataReader(strLenh);
