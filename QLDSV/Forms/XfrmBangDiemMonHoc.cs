@@ -46,6 +46,10 @@ namespace QLDSV.Forms
             int lan = Convert.ToInt32(numberLan.Value);
 
             Xtrp_BangDiemMonHoc xtrp_BangDiemMonHoc = new Xtrp_BangDiemMonHoc(malop, mamh, lan);
+            String tenlop = cbbMALOP.Text.Trim();
+            String tenmh = cbbMAMH.Text.Trim();
+            xtrp_BangDiemMonHoc.setLabel(tenlop, tenmh, lan);
+
             ReportPrintTool print = new ReportPrintTool(xtrp_BangDiemMonHoc);
             print.ShowPreviewDialog();
         }

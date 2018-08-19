@@ -42,6 +42,7 @@ namespace QLDSV.Forms
             String malop = cbbMALOP.SelectedValue.ToString();
             Console.WriteLine("ma lop: " + malop);
             Xtrp_DSSV xtrp_DSSV = new Xtrp_DSSV(makhoa, malop);
+            xtrp_DSSV.setLabel(cbbMALOP.Text.Trim());
             ReportPrintTool print = new ReportPrintTool(xtrp_DSSV);
             print.ShowPreviewDialog();
         }

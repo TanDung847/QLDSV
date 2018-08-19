@@ -68,6 +68,7 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.sP_DSSVTableAdapter1 = new QLDSV.DS_QLDSVTableAdapters.SP_DSSVTableAdapter();
             this.dS_QLDSV1 = new QLDSV.DS_QLDSV();
+            this.lbLop = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV1)).BeginInit();
@@ -231,8 +232,9 @@
             // reportHeaderBand1
             // 
             this.reportHeaderBand1.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.lbLop,
             this.xrLabel1});
-            this.reportHeaderBand1.HeightF = 60F;
+            this.reportHeaderBand1.HeightF = 125.625F;
             this.reportHeaderBand1.Name = "reportHeaderBand1";
             // 
             // xrLabel1
@@ -295,14 +297,14 @@
             // 
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.StyleName = "DetailCaption3";
-            this.xrTableCell1.Text = "HO";
+            this.xrTableCell1.Text = "Họ";
             this.xrTableCell1.Weight = 0.1003344491811899D;
             // 
             // xrTableCell2
             // 
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.StyleName = "DetailCaption3";
-            this.xrTableCell2.Text = "TEN";
+            this.xrTableCell2.Text = "Tên";
             this.xrTableCell2.Weight = 0.11705684955303486D;
             // 
             // xrTableCell3
@@ -310,7 +312,7 @@
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.StyleName = "DetailCaption3";
             this.xrTableCell3.StylePriority.UseTextAlignment = false;
-            this.xrTableCell3.Text = "PHAI";
+            this.xrTableCell3.Text = "Phái";
             this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell3.Weight = 0.13712374173677885D;
             // 
@@ -318,21 +320,21 @@
             // 
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.StyleName = "DetailCaption3";
-            this.xrTableCell4.Text = "NGAYSINH";
+            this.xrTableCell4.Text = "Ngày Sinh";
             this.xrTableCell4.Weight = 0.24749164287860576D;
             // 
             // xrTableCell5
             // 
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StyleName = "DetailCaption3";
-            this.xrTableCell5.Text = "NOISINH";
+            this.xrTableCell5.Text = "Nơi Sinh";
             this.xrTableCell5.Weight = 0.21404681865985578D;
             // 
             // xrTableCell6
             // 
             this.xrTableCell6.Name = "xrTableCell6";
             this.xrTableCell6.StyleName = "DetailCaption3";
-            this.xrTableCell6.Text = "DIACHI";
+            this.xrTableCell6.Text = "Địa Chỉ";
             this.xrTableCell6.Weight = 0.1839464862530048D;
             // 
             // Title
@@ -400,6 +402,19 @@
             this.dS_QLDSV1.DataSetName = "DS_QLDSV";
             this.dS_QLDSV1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // lbLop
+            // 
+            this.lbLop.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lbLop.LocationFloat = new DevExpress.Utils.PointFloat(6F, 49.8125F);
+            this.lbLop.Name = "lbLop";
+            this.lbLop.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbLop.SizeF = new System.Drawing.SizeF(638F, 26F);
+            this.lbLop.StyleName = "Title";
+            this.lbLop.StylePriority.UseFont = false;
+            this.lbLop.StylePriority.UseTextAlignment = false;
+            this.lbLop.Text = "Lớp";
+            this.lbLop.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // Xtrp_DSSV
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -466,5 +481,6 @@
         private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
         private DS_QLDSVTableAdapters.SP_DSSVTableAdapter sP_DSSVTableAdapter1;
         private DS_QLDSV dS_QLDSV1;
+        private DevExpress.XtraReports.UI.XRLabel lbLop;
     }
 }

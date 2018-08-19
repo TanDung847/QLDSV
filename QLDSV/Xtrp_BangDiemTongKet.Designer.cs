@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
+            this.lbLop = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
-            this.lbLop = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // Detail
@@ -44,6 +44,30 @@
             this.Detail.Name = "Detail";
             this.Detail.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.Detail.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
+            // 
+            // lbLop
+            // 
+            this.lbLop.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.lbLop.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 57.62501F);
+            this.lbLop.Name = "lbLop";
+            this.lbLop.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lbLop.SizeF = new System.Drawing.SizeF(630F, 32.37498F);
+            this.lbLop.StylePriority.UseFont = false;
+            this.lbLop.Text = "lbLop";
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.AutoWidth = true;
+            this.xrLabel1.CanShrink = true;
+            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 14F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(212.5F, 10.00001F);
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(255.2083F, 35.50002F);
+            this.xrLabel1.StylePriority.UseFont = false;
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "BẢNG ĐIỂM TỔNG KẾT";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // TopMargin
             // 
@@ -58,30 +82,6 @@
             this.BottomMargin.Name = "BottomMargin";
             this.BottomMargin.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 0, 0, 100F);
             this.BottomMargin.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.AutoWidth = true;
-            this.xrLabel1.CanShrink = true;
-            this.xrLabel1.Font = new System.Drawing.Font("Times New Roman", 14F);
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(212.5F, 10.00001F);
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(255.2083F, 35.50002F);
-            this.xrLabel1.StylePriority.UseFont = false;
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "Bảng điểm tổng kết";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // lbLop
-            // 
-            this.lbLop.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.lbLop.LocationFloat = new DevExpress.Utils.PointFloat(10.00001F, 57.62501F);
-            this.lbLop.Name = "lbLop";
-            this.lbLop.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.lbLop.SizeF = new System.Drawing.SizeF(585.4166F, 32.37502F);
-            this.lbLop.StylePriority.UseFont = false;
-            this.lbLop.Text = "lbLop";
             // 
             // Xtrp_BangDiemTongKet
             // 

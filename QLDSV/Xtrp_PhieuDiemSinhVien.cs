@@ -14,6 +14,9 @@ namespace QLDSV
             dS_QLDSV1.EnforceConstraints = false;
             this.sP_PHIEUDIEMTableAdapter.Fill(this.dS_QLDSV1.SP_PHIEUDIEM, masv);
         }
-
+        public void setLabel(String tensv)
+        {
+            this.lbTenSV.Text = "Sinh viên: " + tensv;
+        }
     }
 }

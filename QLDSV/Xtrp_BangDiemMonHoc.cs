@@ -14,6 +14,13 @@ namespace QLDSV
             dS_QLDSV1.EnforceConstraints = false;
             this.sP_BANGDIEMTableAdapter.Fill(this.dS_QLDSV1.SP_BANGDIEM, malop, mamh, lan);
         }
+        public void setLabel(String tenlop, String tenmh, int lan)
+        {
+            this.lbLop.Text = "Lớp: " + tenlop;
+            this.lbMonHoc.Text = "Môn học: " + tenmh;
+            this.lbLan.Text = "Lần thi: " + lan.ToString();
+        }
+
 
     }
 }

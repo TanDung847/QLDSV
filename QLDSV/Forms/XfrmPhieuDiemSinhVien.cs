@@ -37,6 +37,7 @@ namespace QLDSV.Forms
 
             String masv = cbbMASV.SelectedValue.ToString();
             Xtrp_PhieuDiemSinhVien xtrp_PhieuDiem = new Xtrp_PhieuDiemSinhVien(masv);
+            xtrp_PhieuDiem.setLabel(cbbMASV.Text.Trim());
             ReportPrintTool print = new ReportPrintTool(xtrp_PhieuDiem);
             print.ShowPreviewDialog();
         }
