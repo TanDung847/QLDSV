@@ -66,6 +66,22 @@ namespace QLDSV
 
         }
 
+        public static int KetNoiBySupport(String _servername)
+        {
+            int ok = 1;
+            String orgServername = Program.servername;
+            String orgMLogin = Program.mlogin;
+            String orgPassword = Program.password;
+            Program.servername = _servername;
+            Program.mlogin = Program.remotelogin;
+            Program.password = Program.remotepassword;
+            ok = Program.KetNoi();
+            Program.servername = orgServername;
+            Program.mlogin = orgMLogin;
+            Program.password = orgPassword;
+            return ok;
+        }
+
         public static bool checkExistsAllSite(SqlDataReader myreader, String strLenh)
         {
             bool ok = false;

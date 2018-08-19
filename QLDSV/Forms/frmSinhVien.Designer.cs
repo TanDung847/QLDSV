@@ -262,6 +262,7 @@
             this.sINHVIENGridControl.TabIndex = 1;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.sINHVIENGridControl.Click += new System.EventHandler(this.sINHVIENGridControl_Click);
             this.sINHVIENGridControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sINHVIENGridControl_MouseClick);
             // 
             // gridView1
@@ -391,10 +392,11 @@
             this.barChucNang.OptionsBar.MultiLine = true;
             this.barChucNang.OptionsBar.UseWholeRow = true;
             this.barChucNang.Text = "Main menu";
+            this.barChucNang.Visible = false;
             // 
             // btnAdd
             // 
-            this.btnAdd.Caption = "Add";
+            this.btnAdd.Caption = "Thêm";
             this.btnAdd.Id = 3;
             this.btnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.Image")));
             this.btnAdd.Name = "btnAdd";
@@ -402,7 +404,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Caption = "Edit";
+            this.btnEdit.Caption = "Sửa";
             this.btnEdit.Id = 4;
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Name = "btnEdit";
@@ -410,7 +412,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Caption = "Delete";
+            this.btnDelete.Caption = "Xóa";
             this.btnDelete.Id = 5;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
             this.btnDelete.Name = "btnDelete";
@@ -418,7 +420,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Caption = "Save";
+            this.btnSave.Caption = "Ghi";
             this.btnSave.Id = 6;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
             this.btnSave.Name = "btnSave";
@@ -427,7 +429,8 @@
             // 
             // btnUndo
             // 
-            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Caption = "Phục Hồi";
+            this.btnUndo.Enabled = false;
             this.btnUndo.Id = 7;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
@@ -435,7 +438,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Tải lại";
+            this.barButtonItem3.Caption = "Tải Lại";
             this.barButtonItem3.Id = 9;
             this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
@@ -730,6 +733,8 @@
             this.Name = "frmSinhVien";
             this.Text = "SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmSinhVien_Activated);
+            this.Deactivate += new System.EventHandler(this.frmSinhVien_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSinhVien_FormClosed_1);
             this.Load += new System.EventHandler(this.frmSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();

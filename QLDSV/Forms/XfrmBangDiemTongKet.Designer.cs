@@ -38,18 +38,18 @@
             this.cbbMALOP = new System.Windows.Forms.ComboBox();
             this.btnIn = new System.Windows.Forms.Button();
             this.pnKhoa = new System.Windows.Forms.Panel();
-            this.dS_DSPM = new QLDSV.DS_DSPM();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
-            this.tENCNComboBox = new System.Windows.Forms.ComboBox();
             tenlopLabel = new System.Windows.Forms.Label();
             tENCNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).BeginInit();
             this.pnKhoa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             this.SuspendLayout();
             // 
             // tenlopLabel
@@ -60,6 +60,15 @@
             tenlopLabel.Size = new System.Drawing.Size(24, 13);
             tenlopLabel.TabIndex = 1;
             tenlopLabel.Text = "Lớp";
+            // 
+            // tENCNLabel
+            // 
+            tENCNLabel.AutoSize = true;
+            tENCNLabel.Location = new System.Drawing.Point(39, 22);
+            tENCNLabel.Name = "tENCNLabel";
+            tENCNLabel.Size = new System.Drawing.Size(31, 13);
+            tENCNLabel.TabIndex = 0;
+            tENCNLabel.Text = "Khoa";
             // 
             // dS_QLDSV
             // 
@@ -112,7 +121,7 @@
             // pnKhoa
             // 
             this.pnKhoa.Controls.Add(tENCNLabel);
-            this.pnKhoa.Controls.Add(this.tENCNComboBox);
+            this.pnKhoa.Controls.Add(this.cbbKhoa);
             this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnKhoa.Location = new System.Drawing.Point(0, 0);
             this.pnKhoa.Name = "pnKhoa";
@@ -120,15 +129,28 @@
             this.pnKhoa.TabIndex = 4;
             this.pnKhoa.Visible = false;
             // 
-            // dS_DSPM
+            // cbbKhoa
             // 
-            this.dS_DSPM.DataSetName = "DS_DSPM";
-            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(91, 19);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(278, 21);
+            this.cbbKhoa.TabIndex = 1;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
             // 
             // v_DSPMBindingSource
             // 
             this.v_DSPMBindingSource.DataMember = "V_DSPM";
             this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
+            // 
+            // dS_DSPM
+            // 
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // v_DSPMTableAdapter
             // 
@@ -139,27 +161,6 @@
             this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager1.Connection = null;
             this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tENCNLabel
-            // 
-            tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(39, 22);
-            tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(31, 13);
-            tENCNLabel.TabIndex = 0;
-            tENCNLabel.Text = "Khoa";
-            // 
-            // tENCNComboBox
-            // 
-            this.tENCNComboBox.DataSource = this.v_DSPMBindingSource;
-            this.tENCNComboBox.DisplayMember = "TENCN";
-            this.tENCNComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tENCNComboBox.FormattingEnabled = true;
-            this.tENCNComboBox.Location = new System.Drawing.Point(91, 19);
-            this.tENCNComboBox.Name = "tENCNComboBox";
-            this.tENCNComboBox.Size = new System.Drawing.Size(278, 21);
-            this.tENCNComboBox.TabIndex = 1;
-            this.tENCNComboBox.ValueMember = "TENSERVER";
             // 
             // XfrmBangDiemTongKet
             // 
@@ -177,8 +178,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
             this.pnKhoa.ResumeLayout(false);
             this.pnKhoa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +198,6 @@
         private System.Windows.Forms.BindingSource v_DSPMBindingSource;
         private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
         private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
-        private System.Windows.Forms.ComboBox tENCNComboBox;
+        private System.Windows.Forms.ComboBox cbbKhoa;
     }
 }

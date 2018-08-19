@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tenlopLabel1;
             System.Windows.Forms.Label tENKHLabel;
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.cbbMAKHOA = new System.Windows.Forms.ComboBox();
-            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dS_QLDSV = new QLDSV.DS_QLDSV();
+            this.pnKhoa = new System.Windows.Forms.Panel();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DSPM = new QLDSV.DS_DSPM();
+            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dS_QLDSV = new QLDSV.DS_QLDSV();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
             this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,11 +47,11 @@
             this.v_dskhoaTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dskhoaTableAdapter();
             tenlopLabel1 = new System.Windows.Forms.Label();
             tENKHLabel = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.v_dskhoaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
+            this.pnKhoa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_dskhoaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,37 +73,29 @@
             tENKHLabel.TabIndex = 0;
             tENKHLabel.Text = "Khoa";
             // 
-            // panel1
+            // pnKhoa
             // 
-            this.panel1.Controls.Add(tENKHLabel);
-            this.panel1.Controls.Add(this.cbbMAKHOA);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 59);
-            this.panel1.TabIndex = 0;
+            this.pnKhoa.Controls.Add(tENKHLabel);
+            this.pnKhoa.Controls.Add(this.cbbKhoa);
+            this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnKhoa.Location = new System.Drawing.Point(0, 0);
+            this.pnKhoa.Name = "pnKhoa";
+            this.pnKhoa.Size = new System.Drawing.Size(533, 73);
+            this.pnKhoa.TabIndex = 0;
+            this.pnKhoa.Visible = false;
             // 
-            // cbbMAKHOA
+            // cbbKhoa
             // 
-            this.cbbMAKHOA.DataSource = this.v_dskhoaBindingSource;
-            this.cbbMAKHOA.DisplayMember = "TENKH";
-            this.cbbMAKHOA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbMAKHOA.FormattingEnabled = true;
-            this.cbbMAKHOA.Location = new System.Drawing.Point(164, 23);
-            this.cbbMAKHOA.Name = "cbbMAKHOA";
-            this.cbbMAKHOA.Size = new System.Drawing.Size(223, 21);
-            this.cbbMAKHOA.TabIndex = 1;
-            this.cbbMAKHOA.ValueMember = "MAKH";
-            // 
-            // v_dskhoaBindingSource
-            // 
-            this.v_dskhoaBindingSource.DataMember = "v_dskhoa";
-            this.v_dskhoaBindingSource.DataSource = this.dS_QLDSV;
-            // 
-            // dS_QLDSV
-            // 
-            this.dS_QLDSV.DataSetName = "DS_QLDSV";
-            this.dS_QLDSV.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(164, 23);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(223, 21);
+            this.cbbKhoa.TabIndex = 1;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbMAKHOA_SelectedIndexChanged);
             // 
             // v_DSPMBindingSource
             // 
@@ -114,6 +106,16 @@
             // 
             this.dS_DSPM.DataSetName = "DS_DSPM";
             this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // v_dskhoaBindingSource
+            // 
+            this.v_dskhoaBindingSource.DataMember = "v_dskhoa";
+            this.v_dskhoaBindingSource.DataSource = this.dS_QLDSV;
+            // 
+            // dS_QLDSV
+            // 
+            this.dS_QLDSV.DataSetName = "DS_QLDSV";
+            this.dS_QLDSV.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // v_DSPMTableAdapter
             // 
@@ -180,16 +182,16 @@
             this.Controls.Add(this.btnIn);
             this.Controls.Add(tenlopLabel1);
             this.Controls.Add(this.cbbMALOP);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnKhoa);
             this.Name = "XfrmDSSV";
             this.Text = "XfrmDSSV";
             this.Load += new System.EventHandler(this.XfrmDSSV_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.v_dskhoaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
+            this.pnKhoa.ResumeLayout(false);
+            this.pnKhoa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_dskhoaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -198,7 +200,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnKhoa;
         private DS_DSPM dS_DSPM;
         private System.Windows.Forms.BindingSource v_DSPMBindingSource;
         private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
@@ -211,6 +213,6 @@
         private System.Windows.Forms.Button btnIn;
         private System.Windows.Forms.BindingSource v_dskhoaBindingSource;
         private DS_QLDSVTableAdapters.v_dskhoaTableAdapter v_dskhoaTableAdapter;
-        private System.Windows.Forms.ComboBox cbbMAKHOA;
+        private System.Windows.Forms.ComboBox cbbKhoa;
     }
 }

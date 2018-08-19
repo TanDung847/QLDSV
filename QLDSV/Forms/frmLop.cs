@@ -61,6 +61,11 @@ namespace QLDSV.Forms
             {
                 pnKhoa.Visible = true;
             }
+            if (Program.mGroup.Equals("USER"))
+            {
+                groupBox1.Visible = true;
+                barChucNang.Visible = true;
+            }
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -145,6 +150,7 @@ namespace QLDSV.Forms
             {
                 lOPBindingSource.EndEdit();
                 lOPBindingSource.ResetCurrentItem();
+                btnUndo.Enabled = true;
                 //this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
                 //this.lOPTableAdapter.Update(this.dS_QLDSV);
                 reloadWithoutFill();
@@ -197,28 +203,15 @@ namespace QLDSV.Forms
         {
             try
             {
-                String orgServername = Program.servername;
-                String orgMLogin = Program.mlogin;
-                String orgPassword = Program.password;
-                Program.servername = cbbKhoa.SelectedValue.ToString();
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-                if (Program.KetNoi() == 0)
-                {
-                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-                }
-                else
+                if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
                 {
                     this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.dS_QLDSV.EnforceConstraints = false;
                     this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
                 }
-                Program.servername = orgServername;
-                Program.mlogin = orgMLogin;
-                Program.password = orgPassword;
             } catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -263,20 +256,30 @@ namespace QLDSV.Forms
 
         private void frmLop_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Console.WriteLine("End ne");
-            try
-            {
-                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.lOPTableAdapter.Update(this.dS_QLDSV);
-            } catch (Exception ex)
-            {
-
-            }
+            saveToDatabase();
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             reload();
+        }
+
+        private void frmLop_Deactivate(object sender, EventArgs e)
+        {
+            saveToDatabase();
+        }
+        private void saveToDatabase()
+        {
+            btnUndo.Enabled = false;
+            try
+            {
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Update(this.dS_QLDSV);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
