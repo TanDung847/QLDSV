@@ -55,7 +55,7 @@
             this.lOPTableAdapter = new QLDSV.DS_QLDSVTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvMonHoc = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENLOP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -78,7 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMonHoc)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMAKHOA.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTENLOP.Properties)).BeginInit();
@@ -218,38 +218,38 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(759, 42);
+            this.barDockControlTop.Size = new System.Drawing.Size(759, 40);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 479);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 474);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(759, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(759, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 437);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 434);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(759, 42);
+            this.barDockControlRight.Location = new System.Drawing.Point(759, 40);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 437);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 434);
             // 
             // pnKhoa
             // 
             this.pnKhoa.Controls.Add(tENCNLabel);
             this.pnKhoa.Controls.Add(this.cbbKhoa);
             this.pnKhoa.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnKhoa.Location = new System.Drawing.Point(0, 42);
+            this.pnKhoa.Location = new System.Drawing.Point(0, 40);
             this.pnKhoa.Name = "pnKhoa";
             this.pnKhoa.Size = new System.Drawing.Size(759, 68);
             this.pnKhoa.TabIndex = 4;
@@ -307,24 +307,24 @@
             // 
             this.lOPGridControl.DataSource = this.lOPBindingSource;
             this.lOPGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lOPGridControl.Location = new System.Drawing.Point(0, 110);
-            this.lOPGridControl.MainView = this.gridView1;
+            this.lOPGridControl.Location = new System.Drawing.Point(0, 108);
+            this.lOPGridControl.MainView = this.gvMonHoc;
             this.lOPGridControl.MenuManager = this.barManager1;
             this.lOPGridControl.Name = "lOPGridControl";
             this.lOPGridControl.Size = new System.Drawing.Size(759, 153);
             this.lOPGridControl.TabIndex = 6;
             this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gvMonHoc});
             this.lOPGridControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lOPGridControl_MouseClick);
             // 
-            // gridView1
+            // gvMonHoc
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvMonHoc.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMALOP,
             this.colTENLOP});
-            this.gridView1.GridControl = this.lOPGridControl;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsBehavior.Editable = false;
+            this.gvMonHoc.GridControl = this.lOPGridControl;
+            this.gvMonHoc.Name = "gvMonHoc";
+            this.gvMonHoc.OptionsBehavior.Editable = false;
             // 
             // colMALOP
             // 
@@ -354,9 +354,9 @@
             this.groupBox1.Controls.Add(this.txtMALOP);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(0, 263);
+            this.groupBox1.Location = new System.Drawing.Point(0, 261);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(759, 216);
+            this.groupBox1.Size = new System.Drawing.Size(759, 213);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
@@ -456,7 +456,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMonHoc)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMAKHOA.Properties)).EndInit();
@@ -483,7 +483,7 @@
         private DS_QLDSVTableAdapters.LOPTableAdapter lOPTableAdapter;
         private DS_QLDSVTableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl lOPGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvMonHoc;
         private System.Windows.Forms.GroupBox groupBox1;
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;

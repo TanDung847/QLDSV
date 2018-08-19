@@ -14,6 +14,7 @@ namespace QLDSV.Forms
 {
     public partial class frmSinhVien : DevExpress.XtraEditors.XtraForm
     {
+        bool isPGV = false;
         int viTri = 0;
         bool editMode = false;
         String currentMaSv;
@@ -46,9 +47,14 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
-            if (Program.mGroup.Equals("PGV"))
+            isPGV = Program.mGroup.Equals("PGV");
+            if (isPGV)
             {
                 pnKhoa.Visible = true;
+            }
+            if (Program.mGroup.Equals("KHOA"))
+            {
+
             }
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
