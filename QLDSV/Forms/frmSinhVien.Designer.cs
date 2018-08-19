@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label mASVLabel;
             System.Windows.Forms.Label hOLabel;
             System.Windows.Forms.Label tENLabel;
@@ -42,7 +41,7 @@
             System.Windows.Forms.Label tENCNLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSinhVien));
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource();
             this.sINHVIENTableAdapter = new QLDSV.DS_QLDSVTableAdapters.SINHVIENTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
@@ -57,7 +56,7 @@
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGHICHU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barChucNang = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -86,11 +85,11 @@
             this.txtTEN = new DevExpress.XtraEditors.TextEdit();
             this.txtHO = new DevExpress.XtraEditors.TextEdit();
             this.txtMASV = new DevExpress.XtraEditors.TextEdit();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
@@ -622,6 +621,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateNGAYSINH.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateNGAYSINH.Properties.MaxValue = new System.DateTime(2018, 8, 19, 0, 0, 0, 0);
+            this.dateNGAYSINH.Properties.MinValue = new System.DateTime(1901, 1, 1, 0, 0, 0, 0);
             this.dateNGAYSINH.Size = new System.Drawing.Size(100, 20);
             this.dateNGAYSINH.TabIndex = 11;
             // 

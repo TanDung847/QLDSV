@@ -289,6 +289,19 @@ namespace QLDSV.Forms
                 dateNGAYSINH.Focus();
                 return;
             }
+            if (dateNGAYSINH.DateTime.Date > DateTime.Today)
+            {
+                MessageBox.Show("Ngày sinh không được phép lớn hơn ngày hiện tại", "", MessageBoxButtons.OK);
+                dateNGAYSINH.Focus();
+                return;
+            }
+            TimeSpan years = DateTime.Today.Subtract(dateNGAYSINH.DateTime);
+            if (dateNGAYSINH.DateTime > DateTime.Now.AddYears(-16))
+            {
+                MessageBox.Show("Sinh viên phải lớn hơn 16 tuổi", "", MessageBoxButtons.OK);
+                dateNGAYSINH.Focus();
+                return;
+            }
 
             //((DataRowView)bdsSV[0])["MALOP"] = cmbMALOP.SelectedText.ToString().Trim();
             if (!isExists())
@@ -337,7 +350,7 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            saveToDatabase();
         }
 
         private void frmSinhVien_FormClosed_1(object sender, FormClosedEventArgs e)
