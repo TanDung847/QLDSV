@@ -47,16 +47,6 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
-            isPGV = Program.mGroup.Equals("PGV");
-            if (isPGV)
-            {
-                pnKhoa.Visible = true;
-            }
-            if (Program.mGroup.Equals("USER"))
-            {
-                groupBox1.Visible = true;
-                barChucNang.Visible = true;
-            }
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
@@ -66,6 +56,7 @@ namespace QLDSV.Forms
             this.dS_QLDSV.EnforceConstraints = false;
             this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
+            
         }
 
         private void pHAILabel1_Click(object sender, EventArgs e)
@@ -239,6 +230,7 @@ namespace QLDSV.Forms
 
         private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cbbKhoa.SelectedIndex;
             try
             {
                 if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
@@ -371,7 +363,18 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Activated(object sender, EventArgs e)
         {
-            frmSinhVien_Load(sender, e);
+            //frmSinhVien_Load(sender, e);
+            isPGV = Program.mGroup.Equals("PGV");
+            if (isPGV)
+            {
+                pnKhoa.Visible = true;
+                cbbKhoa.SelectedIndex = Program.mKhoa;
+            }
+            if (Program.mGroup.Equals("USER"))
+            {
+                groupBox1.Visible = true;
+                barChucNang.Visible = true;
+            }
         }
 
         private void saveToDatabase()

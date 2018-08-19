@@ -28,28 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label ho_va_TenLabel;
             System.Windows.Forms.Label tENCNLabel;
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.v_dssvBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dssvBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dssvTableAdapter = new QLDSV.DS_QLDSVTableAdapters.V_dssvTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.cbbMASV = new System.Windows.Forms.ComboBox();
             this.btnIn = new System.Windows.Forms.Button();
             this.pnKhoa = new System.Windows.Forms.Panel();
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
-            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             ho_va_TenLabel = new System.Windows.Forms.Label();
             tENCNLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dssvBindingSource)).BeginInit();
             this.pnKhoa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
             this.SuspendLayout();
             // 
             // ho_va_TenLabel
@@ -60,6 +59,15 @@
             ho_va_TenLabel.Size = new System.Drawing.Size(41, 13);
             ho_va_TenLabel.TabIndex = 0;
             ho_va_TenLabel.Text = "Họ Tên";
+            // 
+            // tENCNLabel
+            // 
+            tENCNLabel.AutoSize = true;
+            tENCNLabel.Location = new System.Drawing.Point(114, 29);
+            tENCNLabel.Name = "tENCNLabel";
+            tENCNLabel.Size = new System.Drawing.Size(31, 13);
+            tENCNLabel.TabIndex = 0;
+            tENCNLabel.Text = "Khoa";
             // 
             // dS_QLDSV
             // 
@@ -120,35 +128,6 @@
             this.pnKhoa.TabIndex = 3;
             this.pnKhoa.Visible = false;
             // 
-            // dS_DSPM
-            // 
-            this.dS_DSPM.DataSetName = "DS_DSPM";
-            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // v_DSPMBindingSource
-            // 
-            this.v_DSPMBindingSource.DataMember = "V_DSPM";
-            this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
-            // 
-            // v_DSPMTableAdapter
-            // 
-            this.v_DSPMTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager1
-            // 
-            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager1.Connection = null;
-            this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            // 
-            // tENCNLabel
-            // 
-            tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(114, 29);
-            tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(44, 13);
-            tENCNLabel.TabIndex = 0;
-            tENCNLabel.Text = "TENCN:";
-            // 
             // cbbKhoa
             // 
             this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
@@ -162,6 +141,26 @@
             this.cbbKhoa.ValueMember = "TENSERVER";
             this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged);
             // 
+            // v_DSPMBindingSource
+            // 
+            this.v_DSPMBindingSource.DataMember = "V_DSPM";
+            this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
+            // 
+            // dS_DSPM
+            // 
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // v_DSPMTableAdapter
+            // 
+            this.v_DSPMTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // XfrmPhieuDiemSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,13 +172,14 @@
             this.Controls.Add(this.cbbMASV);
             this.Name = "XfrmPhieuDiemSinhVien";
             this.Text = "XfrmPhieuDiem";
+            this.Activated += new System.EventHandler(this.XfrmPhieuDiemSinhVien_Activated);
             this.Load += new System.EventHandler(this.XfrmPhieuDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dssvBindingSource)).EndInit();
             this.pnKhoa.ResumeLayout(false);
             this.pnKhoa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

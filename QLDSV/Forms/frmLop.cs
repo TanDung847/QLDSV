@@ -56,21 +56,14 @@ namespace QLDSV.Forms
 
         private void frmLop_Load(object sender, EventArgs e)
         {
-            isPGV = Program.mGroup.Equals("PGV");
-            if (isPGV)
-            {
-                pnKhoa.Visible = true;
-            }
-            if (Program.mGroup.Equals("USER"))
-            {
-                groupBox1.Visible = true;
-                barChucNang.Visible = true;
-            }
+            
+            
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
             this.dS_QLDSV.EnforceConstraints = false;
             this.lOPTableAdapter.Fill(this.dS_QLDSV.LOP);
+            
 
         }
 
@@ -201,6 +194,7 @@ namespace QLDSV.Forms
 
         private void tENCNComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cbbKhoa.SelectedIndex;
             try
             {
                 if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
@@ -279,6 +273,21 @@ namespace QLDSV.Forms
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void frmLop_Activated(object sender, EventArgs e)
+        {
+            isPGV = Program.mGroup.Equals("PGV");
+            if (isPGV)
+            {
+                pnKhoa.Visible = true;
+                cbbKhoa.SelectedIndex = Program.mKhoa;
+            }
+            if (Program.mGroup.Equals("USER"))
+            {
+                groupBox1.Visible = true;
+                barChucNang.Visible = true;
             }
         }
     }

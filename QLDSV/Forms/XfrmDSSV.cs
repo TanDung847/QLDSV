@@ -21,10 +21,7 @@ namespace QLDSV.Forms
 
         private void XfrmDSSV_Load(object sender, EventArgs e)
         {
-            if (Program.mGroup.Equals("PGV"))
-            {
-                pnKhoa.Visible = true;
-            }
+            
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dskhoa' table. You can move, or remove it, as needed.
             this.v_dskhoaTableAdapter.Fill(this.dS_QLDSV.v_dskhoa);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
@@ -32,6 +29,7 @@ namespace QLDSV.Forms
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
+            
 
         }
 
@@ -49,6 +47,7 @@ namespace QLDSV.Forms
 
         private void cbbMAKHOA_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cbbKhoa.SelectedIndex;
             try
             {
                 if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
@@ -62,6 +61,15 @@ namespace QLDSV.Forms
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }
+
+        private void XfrmDSSV_Activated(object sender, EventArgs e)
+        {
+            if (Program.mGroup.Equals("PGV"))
+            {
+                pnKhoa.Visible = true;
+                cbbKhoa.SelectedIndex = Program.mKhoa;
             }
         }
     }

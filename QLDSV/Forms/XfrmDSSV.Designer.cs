@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tenlopLabel1;
             System.Windows.Forms.Label tENKHLabel;
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
-            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.cbbMALOP = new System.Windows.Forms.ComboBox();
@@ -185,6 +184,7 @@
             this.Controls.Add(this.pnKhoa);
             this.Name = "XfrmDSSV";
             this.Text = "XfrmDSSV";
+            this.Activated += new System.EventHandler(this.XfrmDSSV_Activated);
             this.Load += new System.EventHandler(this.XfrmDSSV_Load);
             this.pnKhoa.ResumeLayout(false);
             this.pnKhoa.PerformLayout();

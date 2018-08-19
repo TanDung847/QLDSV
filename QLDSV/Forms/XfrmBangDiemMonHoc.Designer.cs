@@ -28,30 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tenlopLabel;
             System.Windows.Forms.Label mAMHLabel;
             System.Windows.Forms.Label tENCNLabel;
             this.pnKhoa = new System.Windows.Forms.Panel();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbbKhoa = new System.Windows.Forms.ComboBox();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
-            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dskhoaBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
             this.v_dskhoaTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dskhoaTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.cbbMALOP = new System.Windows.Forms.ComboBox();
             this.btnIn = new System.Windows.Forms.Button();
-            this.v_dsmhBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dsmhBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dsmhTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dsmhTableAdapter();
             this.cbbMAMH = new System.Windows.Forms.ComboBox();
             this.numberLan = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.dSDSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSDSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
-            this.cbbKhoa = new System.Windows.Forms.ComboBox();
             tenlopLabel = new System.Windows.Forms.Label();
             mAMHLabel = new System.Windows.Forms.Label();
             tENCNLabel = new System.Windows.Forms.Label();
@@ -86,6 +85,15 @@
             mAMHLabel.Text = "Môn Học";
             mAMHLabel.Click += new System.EventHandler(this.mAMHLabel_Click);
             // 
+            // tENCNLabel
+            // 
+            tENCNLabel.AutoSize = true;
+            tENCNLabel.Location = new System.Drawing.Point(163, 26);
+            tENCNLabel.Name = "tENCNLabel";
+            tENCNLabel.Size = new System.Drawing.Size(31, 13);
+            tENCNLabel.TabIndex = 0;
+            tENCNLabel.Text = "Khoa";
+            // 
             // pnKhoa
             // 
             this.pnKhoa.Controls.Add(tENCNLabel);
@@ -96,6 +104,19 @@
             this.pnKhoa.Size = new System.Drawing.Size(680, 64);
             this.pnKhoa.TabIndex = 0;
             this.pnKhoa.Visible = false;
+            // 
+            // cbbKhoa
+            // 
+            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cbbKhoa.DisplayMember = "TENCN";
+            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbKhoa.FormattingEnabled = true;
+            this.cbbKhoa.Location = new System.Drawing.Point(238, 26);
+            this.cbbKhoa.Name = "cbbKhoa";
+            this.cbbKhoa.Size = new System.Drawing.Size(258, 21);
+            this.cbbKhoa.TabIndex = 1;
+            this.cbbKhoa.ValueMember = "TENSERVER";
+            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged_1);
             // 
             // v_DSPMBindingSource
             // 
@@ -232,28 +253,6 @@
             this.tableAdapterManager1.Connection = null;
             this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // tENCNLabel
-            // 
-            tENCNLabel.AutoSize = true;
-            tENCNLabel.Location = new System.Drawing.Point(163, 26);
-            tENCNLabel.Name = "tENCNLabel";
-            tENCNLabel.Size = new System.Drawing.Size(31, 13);
-            tENCNLabel.TabIndex = 0;
-            tENCNLabel.Text = "Khoa";
-            // 
-            // cbbKhoa
-            // 
-            this.cbbKhoa.DataSource = this.v_DSPMBindingSource;
-            this.cbbKhoa.DisplayMember = "TENCN";
-            this.cbbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbKhoa.FormattingEnabled = true;
-            this.cbbKhoa.Location = new System.Drawing.Point(238, 26);
-            this.cbbKhoa.Name = "cbbKhoa";
-            this.cbbKhoa.Size = new System.Drawing.Size(258, 21);
-            this.cbbKhoa.TabIndex = 1;
-            this.cbbKhoa.ValueMember = "TENSERVER";
-            this.cbbKhoa.SelectedIndexChanged += new System.EventHandler(this.cbbKhoa_SelectedIndexChanged_1);
-            // 
             // XfrmBangDiemMonHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +268,7 @@
             this.Controls.Add(this.pnKhoa);
             this.Name = "XfrmBangDiemMonHoc";
             this.Text = "XfrmBangDiemMonHoc";
+            this.Activated += new System.EventHandler(this.XfrmBangDiemMonHoc_Activated);
             this.Load += new System.EventHandler(this.XfrmBangDiemMonHoc_Load);
             this.pnKhoa.ResumeLayout(false);
             this.pnKhoa.PerformLayout();

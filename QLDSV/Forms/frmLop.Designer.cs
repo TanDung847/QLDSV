@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tENCNLabel;
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label tENLOPLabel;
             System.Windows.Forms.Label mAKHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLop));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barChucNang = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -49,10 +48,10 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource();
             this.lOPTableAdapter = new QLDSV.DS_QLDSVTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
@@ -449,6 +448,7 @@
             this.Name = "frmLop";
             this.Text = "LỚP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmLop_Activated);
             this.Deactivate += new System.EventHandler(this.frmLop_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLop_FormClosed);
             this.Load += new System.EventHandler(this.frmLop_Load);

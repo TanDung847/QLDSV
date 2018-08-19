@@ -28,18 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tenlopLabel;
             System.Windows.Forms.Label tENCNLabel;
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.cbbMALOP = new System.Windows.Forms.ComboBox();
             this.btnIn = new System.Windows.Forms.Button();
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
@@ -173,6 +172,7 @@
             this.Controls.Add(this.cbbMALOP);
             this.Name = "XfrmBangDiemTongKet";
             this.Text = "XfrmBangDiemTongKet";
+            this.Activated += new System.EventHandler(this.XfrmBangDiemTongKet_Activated);
             this.Load += new System.EventHandler(this.XfrmBangDiemTongKet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_dslopBindingSource)).EndInit();
