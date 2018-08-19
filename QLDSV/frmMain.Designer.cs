@@ -51,6 +51,7 @@
             this.hoTen = new System.Windows.Forms.ToolStripStatusLabel();
             this.nhom = new System.Windows.Forms.ToolStripStatusLabel();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.btnBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -70,9 +71,10 @@
             this.barButtonItem1,
             this.btnPhieuDiemThi,
             this.btnBangDiemMonHoc,
-            this.btnPhieuDiemSinhVien});
+            this.btnPhieuDiemSinhVien,
+            this.btnBangDiemTongKet});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 13;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -193,6 +195,7 @@
             this.ribbonPageGroup3.ItemLinks.Add(this.btnPhieuDiemThi);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnBangDiemMonHoc);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnPhieuDiemSinhVien);
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnBangDiemTongKet);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "In Ấn";
             // 
@@ -241,6 +244,15 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful";
             // 
+            // btnBangDiemTongKet
+            // 
+            this.btnBangDiemTongKet.Caption = "Bảng Điểm Tổng Kết";
+            this.btnBangDiemTongKet.Id = 12;
+            this.btnBangDiemTongKet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+            this.btnBangDiemTongKet.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.btnBangDiemTongKet.Name = "btnBangDiemTongKet";
+            this.btnBangDiemTongKet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBangDiemTongKet_ItemClick);
+            // 
             // frmMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -287,6 +299,7 @@
         private DevExpress.XtraBars.BarButtonItem btnPhieuDiemThi;
         private DevExpress.XtraBars.BarButtonItem btnBangDiemMonHoc;
         private DevExpress.XtraBars.BarButtonItem btnPhieuDiemSinhVien;
+        private DevExpress.XtraBars.BarButtonItem btnBangDiemTongKet;
     }
 }
 

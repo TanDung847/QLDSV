@@ -101,5 +101,10 @@ namespace QLDSV
         {
             ShowMdiChildren(typeof(XfrmPhieuDiemThi));
         }
+
+        private void btnBangDiemTongKet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(XfrmBangDiemTongKet));
+        }
     }
 }
