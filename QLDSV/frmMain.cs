@@ -45,7 +45,10 @@ namespace QLDSV
             manv.Text = "Mã giảng viên: " + Program.username;
             hoTen.Text = "Họ Tên: " + Program.mHoten;
             nhom.Text = "Nhóm: " + Program.mGroup;
-
+            if (Program.mGroup.Equals("USER"))
+            {
+                rbReport.Visible = false;
+            }
 
         }
 
