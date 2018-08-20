@@ -114,7 +114,7 @@
             // mASVLabel
             // 
             mASVLabel.AutoSize = true;
-            mASVLabel.Location = new System.Drawing.Point(501, 41);
+            mASVLabel.Location = new System.Drawing.Point(402, 33);
             mASVLabel.Name = "mASVLabel";
             mASVLabel.Size = new System.Drawing.Size(38, 13);
             mASVLabel.TabIndex = 18;
@@ -223,38 +223,38 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(963, 40);
+            this.barDockControlTop.Size = new System.Drawing.Size(963, 42);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 542);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 547);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(963, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(963, 18);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(963, 40);
+            this.barDockControlRight.Location = new System.Drawing.Point(963, 42);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.cmbKhoa);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 40);
+            this.panel1.Location = new System.Drawing.Point(0, 42);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(963, 70);
             this.panel1.TabIndex = 4;
@@ -307,7 +307,7 @@
             // 
             this.gcDiem.DataSource = this.bdsDiem;
             this.gcDiem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcDiem.Location = new System.Drawing.Point(0, 110);
+            this.gcDiem.Location = new System.Drawing.Point(0, 112);
             this.gcDiem.MainView = this.gridView1;
             this.gcDiem.MenuManager = this.barManager1;
             this.gcDiem.Name = "gcDiem";
@@ -377,19 +377,19 @@
             this.groupBox1.Controls.Add(dIEMLabel);
             this.groupBox1.Controls.Add(lANLabel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 299);
+            this.groupBox1.Location = new System.Drawing.Point(0, 301);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(963, 243);
+            this.groupBox1.Size = new System.Drawing.Size(963, 246);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
             // txtMaSV
             // 
             this.txtMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsDiem, "MASV", true));
-            this.txtMaSV.Location = new System.Drawing.Point(545, 38);
+            this.txtMaSV.Location = new System.Drawing.Point(507, 26);
             this.txtMaSV.MenuManager = this.barManager1;
             this.txtMaSV.Name = "txtMaSV";
-            this.txtMaSV.Size = new System.Drawing.Size(100, 20);
+            this.txtMaSV.Size = new System.Drawing.Size(191, 20);
             this.txtMaSV.TabIndex = 19;
             // 
             // txtLan
@@ -412,7 +412,7 @@
             // 
             // btnTruoc
             // 
-            this.btnTruoc.Location = new System.Drawing.Point(759, 77);
+            this.btnTruoc.Location = new System.Drawing.Point(776, 144);
             this.btnTruoc.Name = "btnTruoc";
             this.btnTruoc.Size = new System.Drawing.Size(75, 23);
             this.btnTruoc.TabIndex = 16;
@@ -422,7 +422,7 @@
             // 
             // btnSau
             // 
-            this.btnSau.Location = new System.Drawing.Point(868, 77);
+            this.btnSau.Location = new System.Drawing.Point(876, 141);
             this.btnSau.Name = "btnSau";
             this.btnSau.Size = new System.Drawing.Size(75, 23);
             this.btnSau.TabIndex = 15;
@@ -448,7 +448,7 @@
             // 
             // btnBatDau
             // 
-            this.btnBatDau.Location = new System.Drawing.Point(805, 23);
+            this.btnBatDau.Location = new System.Drawing.Point(776, 79);
             this.btnBatDau.Name = "btnBatDau";
             this.btnBatDau.Size = new System.Drawing.Size(75, 23);
             this.btnBatDau.TabIndex = 12;
@@ -487,12 +487,12 @@
             this.cmbMaMH.Name = "cmbMaMH";
             this.cmbMaMH.Size = new System.Drawing.Size(189, 21);
             this.cmbMaMH.TabIndex = 9;
-            this.cmbMaMH.ValueMember = "MASV";
+            this.cmbMaMH.ValueMember = "MAMH";
             this.cmbMaMH.SelectedIndexChanged += new System.EventHandler(this.cmbMaMH_SelectedIndexChanged);
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(805, 140);
+            this.btnHuy.Location = new System.Drawing.Point(876, 82);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
             this.btnHuy.TabIndex = 8;

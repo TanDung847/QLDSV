@@ -63,6 +63,7 @@ namespace QLDSV.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            sttsv = 0;
             gcDiem.Enabled = false;
             vitri = bdsDiem.Position;
             groupBox1.Enabled = true;
@@ -80,16 +81,19 @@ namespace QLDSV.Forms
 
             txtMaSV.Text = "";
             txtLan.Text = "1";
-            txtDiem.Text = "";
+            txtDiem.EditValue = "";
+            txtTenSV.Text = "";
 
             btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
             cmbMaMH.Enabled = true;
             txtLan.Enabled = true;
-            txtMaSV.Enabled = true;
-            txtTenSV.Enabled = true;
+            //txtMaSV.Enabled = true;
+            //txtTenSV.Enabled = true;
             cmdLop.Enabled = true;
             btnBatDau.Enabled = true;
+            btnSau.Enabled = false;
+            btnTruoc.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -130,7 +134,7 @@ namespace QLDSV.Forms
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+       {
             if (txtDiem.Text.Trim() == "")
             {
                 MessageBox.Show("Điểm không được trống", "", MessageBoxButtons.OK);
@@ -189,7 +193,7 @@ namespace QLDSV.Forms
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbKhoa.SelectedIndex.ToString() == "System.Data.DataRowView")
+            if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
             {
                 Program.servername = cmbKhoa.SelectedValue.ToString();
             }
@@ -244,11 +248,11 @@ namespace QLDSV.Forms
             }
 
             mamh = cmbMaMH.SelectedValue.ToString();
-            lan = txtLan.Text;
+            lan = txtLan.Text.ToString();
 
-            cmbMaMH.DataSource = bdsDiem;
-            cmbMaMH.DisplayMember = "MAMH";
-            cmbMaMH.ValueMember = "MAMH";
+            //cmbMaMH.DataSource = bdsDiem;
+           // cmbMaMH.DisplayMember = "MAMH";
+            //cmbMaMH.ValueMember = "MAMH";
 
             bdsDiem.AddNew();
 
@@ -263,14 +267,17 @@ namespace QLDSV.Forms
                 MessageBox.Show("Lớp không tồn tại sinh viên", "", MessageBoxButtons.OK);
                 return;
             }
-            //cmbMaMH.Enabled = false;
-           // txtLan.Enabled = false;
-           // txtMaSV.Enabled = false;
-//txtTenSV.Enabled = false;
-          //  cmdLop.Enabled = false;
+
+            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString().Trim();
+            txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString().Trim();
+
+            cmbMaMH.Enabled = false;
+            txtLan.Enabled = false;
+            //txtMaSV.Enabled = false;
+            txtTenSV.Enabled = false;
+            cmdLop.Enabled = false;
             
-            txtMaSV.Text = myDataTable.Rows[sttsv][0].ToString();
-            txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString();
+            
 
             btnTruoc.Enabled = false;
             btnBatDau.Enabled = false;
@@ -280,7 +287,7 @@ namespace QLDSV.Forms
         {
             //txtLan.Text = lan;
             cmbMaMH.SelectedValue = mamh;
-            txtMaSV.Text = myDataTable.Rows[sttsv][0].ToString();
+            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
             bdsDiem.EndEdit();
             bdsDiem.AddNew();
             sttsv = sttsv - 1;
@@ -291,7 +298,7 @@ namespace QLDSV.Forms
             }
             btnSau.Enabled = true;
             cmbMaMH.SelectedValue = mamh;
-            txtMaSV.Text = myDataTable.Rows[sttsv][0].ToString();
+            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
             txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString();
         }
 
@@ -299,7 +306,7 @@ namespace QLDSV.Forms
         {
            // txtLan.Text = lan;
             cmbMaMH.SelectedValue = mamh;
-            txtMaSV.Text = myDataTable.Rows[sttsv][0].ToString();
+            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
             bdsDiem.EndEdit();
             bdsDiem.AddNew();
 
@@ -315,7 +322,7 @@ namespace QLDSV.Forms
             }
             btnTruoc.Enabled = true;
             cmbMaMH.SelectedValue = mamh;
-            txtMaSV.Text = myDataTable.Rows[sttsv][0].ToString();
+            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
             txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString();
         }
 
