@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label tENCNLabel;
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label tENLOPLabel;
             System.Windows.Forms.Label mAKHLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLop));
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.barMenu = new DevExpress.XtraBars.Bar();
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barChucNang = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -49,10 +48,10 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lOPBindingSource = new System.Windows.Forms.BindingSource();
             this.lOPTableAdapter = new QLDSV.DS_QLDSVTableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
@@ -124,7 +123,7 @@
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.barMenu,
+            this.barChucNang,
             this.bar3});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
@@ -138,26 +137,27 @@
             this.btnSave,
             this.btnUndo,
             this.btnRefresh});
-            this.barManager1.MainMenu = this.barMenu;
+            this.barManager1.MainMenu = this.barChucNang;
             this.barManager1.MaxItemId = 7;
             this.barManager1.StatusBar = this.bar3;
             // 
-            // barMenu
+            // barChucNang
             // 
-            this.barMenu.BarName = "Main menu";
-            this.barMenu.DockCol = 0;
-            this.barMenu.DockRow = 0;
-            this.barMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barChucNang.BarName = "Main menu";
+            this.barChucNang.DockCol = 0;
+            this.barChucNang.DockRow = 0;
+            this.barChucNang.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barChucNang.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnAdd, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDelete, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnUndo, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRefresh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
-            this.barMenu.OptionsBar.MultiLine = true;
-            this.barMenu.OptionsBar.UseWholeRow = true;
-            this.barMenu.Text = "Main menu";
+            this.barChucNang.OptionsBar.MultiLine = true;
+            this.barChucNang.OptionsBar.UseWholeRow = true;
+            this.barChucNang.Text = "Main menu";
+            this.barChucNang.Visible = false;
             // 
             // btnAdd
             // 
@@ -195,6 +195,7 @@
             // btnUndo
             // 
             this.btnUndo.Caption = "Phục hồi";
+            this.btnUndo.Enabled = false;
             this.btnUndo.Id = 4;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
@@ -369,6 +370,7 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            this.groupBox1.Visible = false;
             // 
             // btnGhi
             // 
@@ -446,6 +448,8 @@
             this.Name = "frmLop";
             this.Text = "LỚP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmLop_Activated);
+            this.Deactivate += new System.EventHandler(this.frmLop_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLop_FormClosed);
             this.Load += new System.EventHandler(this.frmLop_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -470,7 +474,7 @@
         #endregion
 
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar barMenu;
+        private DevExpress.XtraBars.Bar barChucNang;
         private DevExpress.XtraBars.BarButtonItem btnAdd;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;

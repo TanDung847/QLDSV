@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label mASVLabel;
             System.Windows.Forms.Label hOLabel;
             System.Windows.Forms.Label tENLabel;
@@ -42,7 +41,7 @@
             System.Windows.Forms.Label tENCNLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSinhVien));
             this.dS_QLDSV = new QLDSV.DS_QLDSV();
-            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource();
             this.sINHVIENTableAdapter = new QLDSV.DS_QLDSVTableAdapters.SINHVIENTableAdapter();
             this.tableAdapterManager = new QLDSV.DS_QLDSVTableAdapters.TableAdapterManager();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
@@ -57,7 +56,7 @@
             this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGHICHU = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager();
             this.barChucNang = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -86,11 +85,11 @@
             this.txtTEN = new DevExpress.XtraEditors.TextEdit();
             this.txtHO = new DevExpress.XtraEditors.TextEdit();
             this.txtMASV = new DevExpress.XtraEditors.TextEdit();
-            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_dslopBindingSource = new System.Windows.Forms.BindingSource();
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.pnKhoa = new System.Windows.Forms.Panel();
             this.cbbKhoa = new System.Windows.Forms.ComboBox();
-            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource();
             this.dS_DSPM = new QLDSV.DS_DSPM();
             this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
             this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
@@ -262,6 +261,7 @@
             this.sINHVIENGridControl.TabIndex = 1;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.sINHVIENGridControl.Click += new System.EventHandler(this.sINHVIENGridControl_Click);
             this.sINHVIENGridControl.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sINHVIENGridControl_MouseClick);
             // 
             // gridView1
@@ -391,10 +391,11 @@
             this.barChucNang.OptionsBar.MultiLine = true;
             this.barChucNang.OptionsBar.UseWholeRow = true;
             this.barChucNang.Text = "Main menu";
+            this.barChucNang.Visible = false;
             // 
             // btnAdd
             // 
-            this.btnAdd.Caption = "Add";
+            this.btnAdd.Caption = "Thêm";
             this.btnAdd.Id = 3;
             this.btnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.Image")));
             this.btnAdd.Name = "btnAdd";
@@ -402,7 +403,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Caption = "Edit";
+            this.btnEdit.Caption = "Sửa";
             this.btnEdit.Id = 4;
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Name = "btnEdit";
@@ -410,7 +411,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Caption = "Delete";
+            this.btnDelete.Caption = "Xóa";
             this.btnDelete.Id = 5;
             this.btnDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.ImageOptions.Image")));
             this.btnDelete.Name = "btnDelete";
@@ -418,7 +419,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Caption = "Save";
+            this.btnSave.Caption = "Ghi";
             this.btnSave.Id = 6;
             this.btnSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.ImageOptions.Image")));
             this.btnSave.Name = "btnSave";
@@ -427,7 +428,8 @@
             // 
             // btnUndo
             // 
-            this.btnUndo.Caption = "Undo";
+            this.btnUndo.Caption = "Phục Hồi";
+            this.btnUndo.Enabled = false;
             this.btnUndo.Id = 7;
             this.btnUndo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.ImageOptions.Image")));
             this.btnUndo.Name = "btnUndo";
@@ -435,7 +437,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Tải lại";
+            this.barButtonItem3.Caption = "Tải Lại";
             this.barButtonItem3.Id = 9;
             this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
@@ -619,6 +621,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateNGAYSINH.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateNGAYSINH.Properties.MaxValue = new System.DateTime(2018, 8, 19, 0, 0, 0, 0);
+            this.dateNGAYSINH.Properties.MinValue = new System.DateTime(1901, 1, 1, 0, 0, 0, 0);
             this.dateNGAYSINH.Size = new System.Drawing.Size(100, 20);
             this.dateNGAYSINH.TabIndex = 11;
             // 
@@ -730,6 +734,8 @@
             this.Name = "frmSinhVien";
             this.Text = "SINH VIÊN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmSinhVien_Activated);
+            this.Deactivate += new System.EventHandler(this.frmSinhVien_Deactivate);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmSinhVien_FormClosed_1);
             this.Load += new System.EventHandler(this.frmSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();

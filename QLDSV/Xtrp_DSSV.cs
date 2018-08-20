@@ -14,6 +14,10 @@ namespace QLDSV
             dS_QLDSV1.EnforceConstraints = false;
             this.sP_DSSVTableAdapter1.Fill(this.dS_QLDSV1.SP_DSSV, makhoa, malop);
         }
+        public void setLabel(String tenlop)
+        {
+            this.lbLop.Text = "Lớp: " + tenlop;
+        }
 
     }
 }

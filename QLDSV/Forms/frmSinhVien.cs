@@ -47,24 +47,16 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
-            isPGV = Program.mGroup.Equals("PGV");
-            if (isPGV)
-            {
-                pnKhoa.Visible = true;
-            }
-            if (Program.mGroup.Equals("KHOA"))
-            {
-
-            }
             // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
             this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
+            this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             // TODO: This line of code loads data into the 'dS_QLDSV.SINHVIEN' table. You can move, or remove it, as needed.
             this.dS_QLDSV.EnforceConstraints = false;
+            this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
             
-
         }
 
         private void pHAILabel1_Click(object sender, EventArgs e)
@@ -78,6 +70,8 @@ namespace QLDSV.Forms
             viTri = sINHVIENBindingSource.Position;
             groupBox1.Enabled = true;
             sINHVIENBindingSource.AddNew();
+            this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             cbbMaLop.DataSource = v_dslopBindingSource;
             cbbMaLop.SelectedIndex = 0;
         }
@@ -100,6 +94,8 @@ namespace QLDSV.Forms
             viTri = sINHVIENBindingSource.Position;
             groupBox1.Enabled = true;
             String maLop = cbbMaLop.SelectedValue.ToString();
+            this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             cbbMaLop.DataSource = v_dslopBindingSource;
             cbbMaLop.SelectedValue = maLop;
 
@@ -234,19 +230,10 @@ namespace QLDSV.Forms
 
         private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cbbKhoa.SelectedIndex;
             try
             {
-                String orgServername = Program.servername;
-                String orgMLogin = Program.mlogin;
-                String orgPassword = Program.password;
-                Program.servername = cbbKhoa.SelectedValue.ToString();
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-                if (Program.KetNoi() == 0)
-                {
-                    MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-                }
-                else
+                if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
                 {
                     this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
                     this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
@@ -254,14 +241,12 @@ namespace QLDSV.Forms
                     this.dS_QLDSV.EnforceConstraints = false;
                     this.sINHVIENTableAdapter.Fill(this.dS_QLDSV.SINHVIEN);
                 }
-                Program.servername = orgServername;
-                Program.mlogin = orgMLogin;
-                Program.password = orgPassword;
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
             }
+           
         }
 
         private void btnGhi_Click(object sender, EventArgs e)
@@ -296,6 +281,19 @@ namespace QLDSV.Forms
                 dateNGAYSINH.Focus();
                 return;
             }
+            if (dateNGAYSINH.DateTime.Date > DateTime.Today)
+            {
+                MessageBox.Show("Ngày sinh không được phép lớn hơn ngày hiện tại", "", MessageBoxButtons.OK);
+                dateNGAYSINH.Focus();
+                return;
+            }
+            TimeSpan years = DateTime.Today.Subtract(dateNGAYSINH.DateTime);
+            if (dateNGAYSINH.DateTime > DateTime.Now.AddYears(-16))
+            {
+                MessageBox.Show("Sinh viên phải lớn hơn 16 tuổi", "", MessageBoxButtons.OK);
+                dateNGAYSINH.Focus();
+                return;
+            }
 
             //((DataRowView)bdsSV[0])["MALOP"] = cmbMALOP.SelectedText.ToString().Trim();
             if (!isExists())
@@ -319,6 +317,7 @@ namespace QLDSV.Forms
             {
                 sINHVIENBindingSource.EndEdit();
                 sINHVIENBindingSource.ResetCurrentItem();
+                btnUndo.Enabled = true;
                 reload();
             }
             catch (Exception ex)
@@ -343,19 +342,12 @@ namespace QLDSV.Forms
 
         private void frmSinhVien_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
+            saveToDatabase();
         }
 
         private void frmSinhVien_FormClosed_1(object sender, FormClosedEventArgs e)
         {
-            try
-            {
-                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
-            } catch (Exception ex)
-            {
-
-            }
+            saveToDatabase();
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -367,6 +359,46 @@ namespace QLDSV.Forms
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             reload();
+        }
+
+        private void frmSinhVien_Activated(object sender, EventArgs e)
+        {
+            //frmSinhVien_Load(sender, e);
+            isPGV = Program.mGroup.Equals("PGV");
+            if (isPGV)
+            {
+                pnKhoa.Visible = true;
+                cbbKhoa.SelectedIndex = Program.mKhoa;
+            }
+            if (Program.mGroup.Equals("USER"))
+            {
+                groupBox1.Visible = true;
+                barChucNang.Visible = true;
+            }
+        }
+
+        private void saveToDatabase()
+        {
+            btnUndo.Enabled = false;
+            try
+            {
+                this.sINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.sINHVIENTableAdapter.Update(this.dS_QLDSV.SINHVIEN);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void frmSinhVien_Deactivate(object sender, EventArgs e)
+        {
+            saveToDatabase();
+        }
+
+        private void sINHVIENGridControl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

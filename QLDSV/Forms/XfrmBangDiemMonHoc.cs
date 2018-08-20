@@ -21,13 +21,17 @@ namespace QLDSV.Forms
 
         private void XfrmBangDiemMonHoc_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
+            this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dsmh' table. You can move, or remove it, as needed.
+            this.v_dsmhTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_dsmhTableAdapter.Fill(this.dS_QLDSV.v_dsmh);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
+            this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dskhoa' table. You can move, or remove it, as needed.
             this.v_dskhoaTableAdapter.Fill(this.dS_QLDSV.v_dskhoa);
-
+            
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -37,6 +41,10 @@ namespace QLDSV.Forms
             int lan = Convert.ToInt32(numberLan.Value);
 
             Xtrp_BangDiemMonHoc xtrp_BangDiemMonHoc = new Xtrp_BangDiemMonHoc(malop, mamh, lan);
+            String tenlop = cbbMALOP.Text.Trim();
+            String tenmh = cbbMAMH.Text.Trim();
+            xtrp_BangDiemMonHoc.setLabel(tenlop, tenmh, lan);
+
             ReportPrintTool print = new ReportPrintTool(xtrp_BangDiemMonHoc);
             print.ShowPreviewDialog();
         }
@@ -59,6 +67,39 @@ namespace QLDSV.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbbKhoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbbKhoa_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Program.mKhoa = cbbKhoa.SelectedIndex;
+            try
+            {
+                if (Program.KetNoiBySupport(cbbKhoa.SelectedValue.ToString()) == 1)
+                {
+                    this.dS_QLDSV.EnforceConstraints = false;
+                    this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void XfrmBangDiemMonHoc_Activated(object sender, EventArgs e)
+        {
+            if (Program.mGroup.Equals("PGV"))
+            {
+                pnKhoa.Visible = true;
+                cbbKhoa.SelectedIndex = Program.mKhoa;
+            }
         }
     }
 }
