@@ -54,26 +54,9 @@ namespace QLDSV.Forms
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            sttsv = 0;
-            gcDiem.Enabled = false;
+            bdsDiem.AddNew();
             vitri = bdsDiem.Position;
             groupBox1.Enabled = true;
-
-            //bdsDiem.AddNew();
-            cmbMaMH.DataSource = v_bdsDSMH;
-            cmbMaMH.DisplayMember = "TENMH";
-            cmbMaMH.ValueMember = "MAMH";
-            cmbMaMH.SelectedIndex = 0;
-
-            cmdLop.DataSource = v_bdsLop;
-            cmdLop.DisplayMember = "TENLOP";
-            cmdLop.ValueMember = "MALOP";
-            cmdLop.SelectedIndex = 0;
-
-            txtMaSV.Text = "";
-            txtLan.Text = "1";
-            txtDiem.EditValue = "";
-            txtTenSV.Text = "";
 
             btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
@@ -81,10 +64,6 @@ namespace QLDSV.Forms
             txtLan.Enabled = true;
             //txtMaSV.Enabled = true;
             //txtTenSV.Enabled = true;
-            cmdLop.Enabled = true;
-            btnBatDau.Enabled = true;
-            btnSau.Enabled = false;
-            btnTruoc.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -118,10 +97,6 @@ namespace QLDSV.Forms
             groupBox1.Enabled = true;
             btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = false;
             btnGhi.Enabled = btnPhucHoi.Enabled = true;
-            cmbMaMH.DataSource = v_bdsDSMH;
-            cmbMaMH.DisplayMember = "TENMH";
-            cmbMaMH.ValueMember = "MAMH";
-            cmbMaMH.SelectedIndex = 0;
         }
 
         private void btnGhi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -221,89 +196,18 @@ namespace QLDSV.Forms
 
         private void btnBatDau_Click(object sender, EventArgs e)
         {
-            if(txtLan.Text.ToString() == "" || int.Parse(txtLan.Text.ToString()) <1 || int.Parse(txtLan.Text.ToString()) > 2)
-            {
-                MessageBox.Show("Lần thi không hợp lệ", "", MessageBoxButtons.OK);
-                return;
-            }
-
-            mamh = cmbMaMH.SelectedValue.ToString();
-            lan = txtLan.Text.ToString();
-
-            //cmbMaMH.DataSource = bdsDiem;
-           // cmbMaMH.DisplayMember = "MAMH";
-            //cmbMaMH.ValueMember = "MAMH";
-
-            bdsDiem.AddNew();
-
-            txtLan.Text = lan;
-            cmbMaMH.SelectedValue = mamh;
-
-            sttsv = 0;
-            String strLenh = "exec SP_LOPSV '" + cmdLop.SelectedValue + "'";
-            myDataTable = Program.ExecSqlDataTable(strLenh);
-            if (myDataTable.Rows.Count == 0)
-            {
-                MessageBox.Show("Lớp không tồn tại sinh viên", "", MessageBoxButtons.OK);
-                return;
-            }
-
-            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString().Trim();
-            txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString().Trim();
-
-            cmbMaMH.Enabled = false;
-            txtLan.Enabled = false;
-            //txtMaSV.Enabled = false;
-            txtTenSV.Enabled = false;
-            cmdLop.Enabled = false;
             
-            
-
-            btnTruoc.Enabled = false;
-            btnBatDau.Enabled = false;
         }
 
         private void btnTruoc_Click(object sender, EventArgs e)
         {
-            //txtLan.Text = lan;
-            cmbMaMH.SelectedValue = mamh;
-            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
-            bdsDiem.EndEdit();
-            bdsDiem.AddNew();
-            sttsv = sttsv - 1;
-            if(sttsv == 0)
-            {
-                btnTruoc.Enabled = false;
-                return;
-            }
-            btnSau.Enabled = true;
-            cmbMaMH.SelectedValue = mamh;
-            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
-            txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString();
+           
         }
 
         private void btnSau_Click(object sender, EventArgs e)
         {
            // txtLan.Text = lan;
-            cmbMaMH.SelectedValue = mamh;
-            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
-            bdsDiem.EndEdit();
-            bdsDiem.AddNew();
-
-            txtLan.Text = lan;
-            cmbMaMH.SelectedValue = mamh;
-
-
-            sttsv = sttsv + 1;
-            if (sttsv == myDataTable.Rows.Count)
-            {
-                btnSau.Enabled = false;
-                return;
-            }
-            btnTruoc.Enabled = true;
-            cmbMaMH.SelectedValue = mamh;
-            txtMaSV.EditValue = myDataTable.Rows[sttsv][0].ToString();
-            txtTenSV.Text = myDataTable.Rows[sttsv][1].ToString();
+            
         }
 
         private void cmdLop_SelectedIndexChanged(object sender, EventArgs e)
