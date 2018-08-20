@@ -21,6 +21,8 @@ namespace QLDSV.Forms
 
         private void XfrmPhieuDiemThi_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
+            this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dsmh' table. You can move, or remove it, as needed.
             this.dS_QLDSV.EnforceConstraints = false;
 
@@ -28,51 +30,24 @@ namespace QLDSV.Forms
             this.v_dsmhTableAdapter.Fill(this.dS_QLDSV.v_dsmh);
             // TODO: This line of code loads data into the 'dS_QLDSV.v_dslop' table. You can move, or remove it, as needed.
             
-            cmbKhoa.DataSource = Program.bds_dspm;
-            cmbKhoa.DisplayMember = "TENCN";
-            cmbKhoa.ValueMember = "TENSERVER";
-            cmbKhoa.SelectedIndex = Program.mKhoa;
-
             this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
-
-            if(Program.mGroup == "KHOA")
-            {
-                panel1.Dispose();
-            }
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cmbKhoa.SelectedIndex;
             try
             {
-                if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+                if (Program.KetNoiBySupport(cmbKhoa.SelectedValue.ToString()) == 1)
                 {
-                    Program.servername = cmbKhoa.SelectedValue.ToString();
+                    this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
                 }
-            }catch(Exception exc)
-            {
-
             }
-            if (cmbKhoa.SelectedIndex != Program.mKhoa)
+            catch (Exception ex)
             {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -87,6 +62,16 @@ namespace QLDSV.Forms
             ReportPrintTool print = new ReportPrintTool(xtrp_PHIEUDIEMTHI);
             print.ShowPreviewDialog();
 
+        }
+
+        private void XfrmPhieuDiemThi_Activated(object sender, EventArgs e)
+        {
+            cmbKhoa.SelectedIndex = Program.mKhoa;
+
+            if (Program.mGroup == "KHOA")
+            {
+                panel1.Dispose();
+            }
         }
     }
 }

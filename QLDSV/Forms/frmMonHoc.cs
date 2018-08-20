@@ -22,35 +22,19 @@ namespace QLDSV.Forms
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Program.mKhoa = cmbKhoa.SelectedIndex;
+            Program.mKhoa = cmbKhoa.SelectedIndex;
             try
             {
-                if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+                if (Program.KetNoiBySupport(cmbKhoa.SelectedValue.ToString()) == 1)
                 {
-                    Program.servername = cmbKhoa.SelectedValue.ToString();
+                    this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.mONHOCTableAdapter.Fill(this.dS_QLDSV.MONHOC);
                 }
-            }catch(Exception exc)
-            {
-
             }
-            if(cmbKhoa.SelectedIndex != Program.mKhoa)
+            catch (Exception ex)
             {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-            if(Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.mONHOCTableAdapter.Fill(this.dS_QLDSV.MONHOC);
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -65,6 +49,8 @@ namespace QLDSV.Forms
 
         private void frmMonHoc_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
+            this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             this.dS_QLDSV.EnforceConstraints = false;
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.dS_QLDSV.MONHOC);
@@ -78,26 +64,6 @@ namespace QLDSV.Forms
             this.mONHOCTableAdapter.Fill(this.dS_QLDSV.MONHOC);
             groupBox1.Enabled = false;
             btnSave.Enabled = false;
-            cmbKhoa.DataSource = Program.bds_dspm;
-            cmbKhoa.DisplayMember = "TENCN";
-            cmbKhoa.ValueMember = "TENSERVER";
-            cmbKhoa.SelectedIndex = Program.mKhoa;
-            if (Program.mGroup == "PGV")
-            {
-                cmbKhoa.Enabled = true;
-                bar2.Dispose();
-                groupBox1.Dispose();
-            }
-            else if (Program.mGroup == "KHOA")
-            {
-                panel1.Dispose();
-                bar2.Dispose();
-                groupBox1.Dispose();
-            }
-            else
-            {
-                panel1.Dispose();
-            }
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -203,6 +169,27 @@ namespace QLDSV.Forms
             gcMonHoc.Enabled = true;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnSave.Enabled = false;
+        }
+
+        private void frmMonHoc_Activated(object sender, EventArgs e)
+        {
+            cmbKhoa.SelectedIndex = Program.mKhoa;
+            if (Program.mGroup == "PGV")
+            {
+                cmbKhoa.Enabled = true;
+                bar2.Dispose();
+                groupBox1.Dispose();
+            }
+            else if (Program.mGroup == "KHOA")
+            {
+                panel1.Dispose();
+                bar2.Dispose();
+                groupBox1.Dispose();
+            }
+            else
+            {
+                panel1.Dispose();
+            }
         }
     }
 }

@@ -36,6 +36,8 @@
             this.bdsDSMH = new System.Windows.Forms.BindingSource(this.components);
             this.v_dsmhTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dsmhTableAdapter();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbKhoa = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.numberLan = new System.Windows.Forms.NumericUpDown();
@@ -44,14 +46,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbLop = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbKhoa = new System.Windows.Forms.ComboBox();
+            this.dS_DSPM = new QLDSV.DS_DSPM();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
+            this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSLOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSMH)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberLan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dS_QLDSV
@@ -96,8 +102,30 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(753, 78);
+            this.panel1.Size = new System.Drawing.Size(753, 92);
             this.panel1.TabIndex = 2;
+            // 
+            // cmbKhoa
+            // 
+            this.cmbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cmbKhoa.DisplayMember = "TENCN";
+            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKhoa.FormattingEnabled = true;
+            this.cmbKhoa.Location = new System.Drawing.Point(204, 29);
+            this.cmbKhoa.Name = "cmbKhoa";
+            this.cmbKhoa.Size = new System.Drawing.Size(253, 21);
+            this.cmbKhoa.TabIndex = 1;
+            this.cmbKhoa.ValueMember = "TENSERVER";
+            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "KHOA";
             // 
             // groupBox1
             // 
@@ -109,9 +137,9 @@
             this.groupBox1.Controls.Add(this.cmbLop);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 78);
+            this.groupBox1.Location = new System.Drawing.Point(0, 92);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(753, 301);
+            this.groupBox1.Size = new System.Drawing.Size(753, 287);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -198,24 +226,25 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "LỚP";
             // 
-            // label1
+            // dS_DSPM
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "KHOA";
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // cmbKhoa
+            // v_DSPMBindingSource
             // 
-            this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbKhoa.FormattingEnabled = true;
-            this.cmbKhoa.Location = new System.Drawing.Point(204, 29);
-            this.cmbKhoa.Name = "cmbKhoa";
-            this.cmbKhoa.Size = new System.Drawing.Size(253, 21);
-            this.cmbKhoa.TabIndex = 1;
-            this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
+            this.v_DSPMBindingSource.DataMember = "V_DSPM";
+            this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
+            // 
+            // v_DSPMTableAdapter
+            // 
+            this.v_DSPMTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // XfrmPhieuDiemThi
             // 
@@ -226,6 +255,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "XfrmPhieuDiemThi";
             this.Text = "XfrmPhieuDiemThi";
+            this.Activated += new System.EventHandler(this.XfrmPhieuDiemThi_Activated);
             this.Load += new System.EventHandler(this.XfrmPhieuDiemThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_QLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDSLOP)).EndInit();
@@ -235,6 +265,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numberLan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -257,5 +289,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbLop;
         private System.Windows.Forms.Label label2;
+        private DS_DSPM dS_DSPM;
+        private System.Windows.Forms.BindingSource v_DSPMBindingSource;
+        private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
+        private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
     }
 }

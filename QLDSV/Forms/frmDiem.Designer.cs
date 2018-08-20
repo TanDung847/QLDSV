@@ -76,6 +76,10 @@
             this.v_dslopTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dslopTableAdapter();
             this.v_bdsDSMH = new System.Windows.Forms.BindingSource(this.components);
             this.v_dsmhTableAdapter = new QLDSV.DS_QLDSVTableAdapters.v_dsmhTableAdapter();
+            this.dS_DSPM = new QLDSV.DS_DSPM();
+            this.v_DSPMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_DSPMTableAdapter = new QLDSV.DS_DSPMTableAdapters.V_DSPMTableAdapter();
+            this.tableAdapterManager1 = new QLDSV.DS_DSPMTableAdapters.TableAdapterManager();
             lANLabel = new System.Windows.Forms.Label();
             dIEMLabel = new System.Windows.Forms.Label();
             mASVLabel = new System.Windows.Forms.Label();
@@ -91,6 +95,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_bdsDSMH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lANLabel
@@ -223,50 +229,53 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(963, 42);
+            this.barDockControlTop.Size = new System.Drawing.Size(963, 40);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 547);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 542);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(963, 18);
+            this.barDockControlBottom.Size = new System.Drawing.Size(963, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 42);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 40);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 502);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(963, 42);
+            this.barDockControlRight.Location = new System.Drawing.Point(963, 40);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 505);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 502);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.cmbKhoa);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 42);
+            this.panel1.Location = new System.Drawing.Point(0, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(963, 70);
+            this.panel1.Size = new System.Drawing.Size(963, 83);
             this.panel1.TabIndex = 4;
             // 
             // cmbKhoa
             // 
+            this.cmbKhoa.DataSource = this.v_DSPMBindingSource;
+            this.cmbKhoa.DisplayMember = "TENCN";
             this.cmbKhoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoa.FormattingEnabled = true;
             this.cmbKhoa.Location = new System.Drawing.Point(264, 25);
             this.cmbKhoa.Name = "cmbKhoa";
             this.cmbKhoa.Size = new System.Drawing.Size(310, 21);
             this.cmbKhoa.TabIndex = 1;
+            this.cmbKhoa.ValueMember = "TENSERVER";
             this.cmbKhoa.SelectedIndexChanged += new System.EventHandler(this.cmbKhoa_SelectedIndexChanged);
             // 
             // label1
@@ -307,7 +316,7 @@
             // 
             this.gcDiem.DataSource = this.bdsDiem;
             this.gcDiem.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gcDiem.Location = new System.Drawing.Point(0, 112);
+            this.gcDiem.Location = new System.Drawing.Point(0, 123);
             this.gcDiem.MainView = this.gridView1;
             this.gcDiem.MenuManager = this.barManager1;
             this.gcDiem.Name = "gcDiem";
@@ -377,9 +386,9 @@
             this.groupBox1.Controls.Add(dIEMLabel);
             this.groupBox1.Controls.Add(lANLabel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 301);
+            this.groupBox1.Location = new System.Drawing.Point(0, 312);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(963, 246);
+            this.groupBox1.Size = new System.Drawing.Size(963, 230);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -518,6 +527,26 @@
             // 
             this.v_dsmhTableAdapter.ClearBeforeFill = true;
             // 
+            // dS_DSPM
+            // 
+            this.dS_DSPM.DataSetName = "DS_DSPM";
+            this.dS_DSPM.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // v_DSPMBindingSource
+            // 
+            this.v_DSPMBindingSource.DataMember = "V_DSPM";
+            this.v_DSPMBindingSource.DataSource = this.dS_DSPM;
+            // 
+            // v_DSPMTableAdapter
+            // 
+            this.v_DSPMTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.Connection = null;
+            this.tableAdapterManager1.UpdateOrder = QLDSV.DS_DSPMTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // frmDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,6 +562,7 @@
             this.Name = "frmDiem";
             this.Text = "ĐIỂM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmDiem_Activated);
             this.Load += new System.EventHandler(this.frmDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -548,6 +578,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.v_bdsDSMH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DSPM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.v_DSPMBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,5 +630,9 @@
         private DevExpress.XtraEditors.TextEdit txtDiem;
         private DevExpress.XtraEditors.TextEdit txtLan;
         private DevExpress.XtraEditors.TextEdit txtMaSV;
+        private DS_DSPM dS_DSPM;
+        private System.Windows.Forms.BindingSource v_DSPMBindingSource;
+        private DS_DSPMTableAdapters.V_DSPMTableAdapter v_DSPMTableAdapter;
+        private DS_DSPMTableAdapters.TableAdapterManager tableAdapterManager1;
     }
 }

@@ -33,6 +33,8 @@ namespace QLDSV.Forms
 
         private void frmDiem_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dS_DSPM.V_DSPM' table. You can move, or remove it, as needed.
+            this.v_DSPMTableAdapter.Fill(this.dS_DSPM.V_DSPM);
             this.dS_QLDSV.EnforceConstraints = false;
             this.dIEMTableAdapter.Connection.ConnectionString = Program.connstr;
             // TODO: This line of code loads data into the 'dS_QLDSV.DIEM' table. You can move, or remove it, as needed.
@@ -47,26 +49,7 @@ namespace QLDSV.Forms
            
             groupBox1.Enabled = false;
             btnGhi.Enabled = false;
-            cmbKhoa.DataSource = Program.bds_dspm;
-            cmbKhoa.DisplayMember = "TENCN";
-            cmbKhoa.ValueMember = "TENSERVER";
-            cmbKhoa.SelectedIndex = Program.mKhoa;
-            if (Program.mGroup == "PGV")
-            {
-                cmbKhoa.Enabled = true;
-                bar2.Dispose();
-                groupBox1.Dispose();
-            }
-            else if(Program.mGroup == "KHOA")
-            {
-                panel1.Dispose();
-                bar2.Dispose();
-                groupBox1.Dispose();
-            }
-            else
-            {
-                panel1.Dispose();
-            }
+            
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -159,7 +142,7 @@ namespace QLDSV.Forms
                 MessageBox.Show("Lần thi không được trống", "", MessageBoxButtons.OK);
                 txtMaSV.Focus();
             }
-            if (cmbMaMH.SelectedValue.ToString() == "")
+            if (cmbMaMH.Text.ToString().Trim() == "")
             {
                 MessageBox.Show("Mã môn học không được trống", "", MessageBoxButtons.OK);
                 txtMaSV.Focus();
@@ -173,7 +156,7 @@ namespace QLDSV.Forms
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Lỗi ghi môn học", exc.Message, MessageBoxButtons.OK);
+                MessageBox.Show("Lỗi ghi môn học"+ exc.Message,"", MessageBoxButtons.OK);
                 return;
             }
             groupBox1.Enabled = false;
@@ -201,35 +184,18 @@ namespace QLDSV.Forms
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Program.mKhoa = cmbKhoa.SelectedIndex;
             try
             {
-                if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+                if (Program.KetNoiBySupport(cmbKhoa.SelectedValue.ToString()) == 1)
                 {
-                    Program.servername = cmbKhoa.SelectedValue.ToString();
+                    this.dIEMTableAdapter.Connection.ConnectionString = Program.connstr;
+                    this.dIEMTableAdapter.Fill(this.dS_QLDSV.DIEM);
                 }
-            }catch(Exception exc)
-            {
-
             }
-            if (cmbKhoa.SelectedIndex != Program.mKhoa)
+            catch (Exception ex)
             {
-                Program.mlogin = Program.remotelogin;
-                Program.password = Program.remotepassword;
-            }
-            else
-            {
-                Program.mlogin = Program.mloginDN;
-                Program.password = Program.passwordDN;
-            }
-            if (Program.KetNoi() == 0)
-            {
-                MessageBox.Show("Lỗi kết nối về chi nhánh mới", "", MessageBoxButtons.OK);
-            }
-            else
-            {
-                this.dIEMTableAdapter.Connection.ConnectionString = Program.connstr;
-                this.dIEMTableAdapter.Fill(this.dS_QLDSV.DIEM);
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -343,6 +309,27 @@ namespace QLDSV.Forms
         private void cmdLop_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmDiem_Activated(object sender, EventArgs e)
+        {
+            if (Program.mGroup == "PGV")
+            {
+                cmbKhoa.Enabled = true;
+                bar2.Dispose();
+                groupBox1.Dispose();
+                cmbKhoa.SelectedIndex = Program.mKhoa;
+            }
+            else if (Program.mGroup == "KHOA")
+            {
+                panel1.Dispose();
+                bar2.Dispose();
+                groupBox1.Dispose();
+            }
+            else
+            {
+                panel1.Dispose();
+            }
         }
     }
 }
