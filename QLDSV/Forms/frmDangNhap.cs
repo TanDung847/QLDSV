@@ -31,7 +31,7 @@ namespace QLDSV.Forms
             if (cbbKhoa.SelectedValue != null)
             {
                 Program.servername = cbbKhoa.SelectedValue.ToString();
-                Program.mKhoa = cbbKhoa.SelectedIndex;
+                //Program.mKhoa = cbbKhoa.SelectedIndex;
             }
         }
 

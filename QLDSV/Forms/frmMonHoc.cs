@@ -22,9 +22,15 @@ namespace QLDSV.Forms
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbKhoa.SelectedIndex.ToString() == "System.Data.DataRowView")
+            try
             {
-                Program.servername = cmbKhoa.SelectedValue.ToString();
+                if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    Program.servername = cmbKhoa.SelectedValue.ToString();
+                }
+            }catch(Exception exc)
+            {
+
             }
             if(cmbKhoa.SelectedIndex != Program.mKhoa)
             {
@@ -76,13 +82,21 @@ namespace QLDSV.Forms
             cmbKhoa.DisplayMember = "TENCN";
             cmbKhoa.ValueMember = "TENSERVER";
             cmbKhoa.SelectedIndex = Program.mKhoa;
-            if(Program.mGroup == "PGV")
+            if (Program.mGroup == "PGV")
             {
                 cmbKhoa.Enabled = true;
+                bar2.Dispose();
+                groupBox1.Dispose();
+            }
+            else if (Program.mGroup == "KHOA")
+            {
+                panel1.Dispose();
+                bar2.Dispose();
+                groupBox1.Dispose();
             }
             else
             {
-                cmbKhoa.Enabled = false;
+                panel1.Dispose();
             }
         }
 

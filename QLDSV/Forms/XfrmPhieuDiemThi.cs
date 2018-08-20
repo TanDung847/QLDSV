@@ -35,13 +35,24 @@ namespace QLDSV.Forms
 
             this.v_dslopTableAdapter.Connection.ConnectionString = Program.connstr;
             this.v_dslopTableAdapter.Fill(this.dS_QLDSV.v_dslop);
+
+            if(Program.mGroup == "KHOA")
+            {
+                panel1.Dispose();
+            }
         }
 
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+            try
             {
-                Program.servername = cmbKhoa.SelectedValue.ToString();
+                if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    Program.servername = cmbKhoa.SelectedValue.ToString();
+                }
+            }catch(Exception exc)
+            {
+
             }
             if (cmbKhoa.SelectedIndex != Program.mKhoa)
             {
